@@ -14,6 +14,27 @@ class Triangulo {
     this.lados = lados;
   }
 
+  validateTriangle() {
+    // Verificar que ninguno de los ángulos sea menor que 0 o mayor o igual a 180°
+    for (let i = 0; i < this.angulos.length; i++) {
+      if (this.angulos[i] < 0 || this.angulos[i] >= 180) {
+        console.log("Error: Los ángulos deben estar en el rango [0, 180).");
+        return false; // El triángulo no es válido
+      }
+    }
+
+    // Verificar que la suma de los ángulos sea igual a 180
+    const sumaAngulos = this.angulos.reduce((acc, val) => acc + val, 0);
+    if (sumaAngulos !== 180) {
+      console.log("Error: La suma de los ángulos debe ser igual a 180 grados.");
+      return false; // El triángulo no es válido
+    }
+
+    // Si pasa ambas verificaciones, el triángulo es válido
+    console.log("¡Triángulo válido!");
+    return true;
+  }
+
   // Métodos para clasificar el triángulo por ángulos y lados
   classifyByAngulos() {
     if (this.angulos[0] === 90 || this.angulos[1] === 90 || this.angulos[2] === 90) {
@@ -48,8 +69,8 @@ class Triangulo {
 function triangleMaster() {
   const triangulo = new Triangulo();
   let opcion;
-  alert("¡Bienvenido a Triangle Master!\n\nTriangleMaster es un juego interactivo que te permite explorar el fascinante mundo de los triángulos. Conviértete en un maestro de la geometría mientras clasificas triángulos por sus ángulos y lados. ¿Serás capaz de identificar un triángulo equilátero, rectángulo o isósceles? ¡Sumérgete en TriangleMaster y mejora tus habilidades matemáticas de manera divertida y educativa!\n\n");
 
+  alert("¡Bienvenido a Triangle Master!\n\nTriangleMaster es un juego interactivo que te permite explorar el fascinante mundo de los triángulos. Conviértete en un maestro de la geometría mientras clasificas triángulos por sus ángulos y lados. ¿Serás capaz de identificar un triángulo equilátero, rectángulo o isósceles? ¡Sumérgete en TriangleMaster y mejora tus habilidades matemáticas de manera divertida y educativa!\n\n");
 
   do {
     opcion = prompt(`
@@ -60,7 +81,9 @@ function triangleMaster() {
       4. Calcular área
       5. Salir
     `);
-const lados = [];
+
+    const lados = []; // Moved this line inside the loop
+
     switch (opcion) {
       case '1':
         // Establecer ángulos
@@ -69,12 +92,16 @@ const lados = [];
           angulos.push(parseFloat(prompt(`Ingrese el ángulo ${i + 1} del triángulo: `)));
         }
         triangulo.setAngulos(angulos);
-        alert(`Clasificación por ángulos: ${triangulo.classifyByAngulos()}`);
+
+        if (triangulo.validateTriangle()) {
+          alert(`Clasificación por ángulos: ${triangulo.classifyByAngulos()}`);
+        } else {
+          alert(`Los ángulos no cumplen con las características necesarias para hacer un triángulo`);
+        }
         break;
 
       case '2':
         // Establecer lados
-        
         for (let i = 0; i < 3; i++) {
           lados.push(parseFloat(prompt(`Ingrese la longitud del lado ${i + 1} del triángulo: `)));
         }
@@ -84,7 +111,6 @@ const lados = [];
 
       case '3':
         // Establecer lados
-
         for (let i = 0; i < 3; i++) {
           lados.push(parseFloat(prompt(`Ingrese la longitud del lado ${i + 1} del triángulo: `)));
         }
@@ -113,4 +139,3 @@ const lados = [];
 
 // Ejecutar el programa Triangle Master
 triangleMaster();
-
