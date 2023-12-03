@@ -3,16 +3,83 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./Assets/css/main.css">
+    <title>Triangle Master</title>
   </head>
-  <body>
-    <div style="margin: 50px">
-      <h1>AngleQuest</h1>
-      <p>Triangle Master.</p>
-      <img src="./Media/javascript-basic-image-exercise-86.png"
-        alt="w3school Excercise"
-      />
+<body>
+    <h1>¡Bienvenido a Triangle Master!</h1>
+    <p>
+      TriangleMaster es un juego interactivo que te permite explorar el fascinante mundo de los triángulos. Conviértete en un maestro de la geometría mientras clasificas triángulos por sus ángulos y lados. ¿Serás capaz de identificar un triángulo equilátero, rectángulo o isósceles? ¡Sumérgete en TriangleMaster y mejora tus habilidades matemáticas de manera divertida y educativa!
+    </p>
+    <div class="card">
+      <h2>Menu de opciones:</h2>
+      <form id="triangleForm">
+          <label for="option">Seleccione una opción:</label>
+          <select id="option" name="option">
+              <option value="1">Clasificación por ángulos</option>
+              <option value="2">Clasificación por lados</option>
+              <option value="3">Calcular perímetro</option>
+              <option value="4">Calcular área</option>
+              <option value="5">Salir</option>
+          </select>
+          <br>
+          <button type="button" id="play" onclick="submitForm()">Jugar</button>
+      </form>
+  </div>
+  <!-- Para Opción 1 Start -->
+  <div id="promptCard1" ">
+    <h2>Ingreso de datos:</h2>
+    <div id="inputContainer1">
+      <label for="angle"></label>
+      <input type="text" name="angle" id="angle" placeholder="">
     </div>
-    <script src="./js/index.js" defer></script>
-  </body>
+    <button type="button" id="submit" onclick="submitForm()">Ingresar</button>
+  </div>
+  <div id="output1">
+    <h2>Resultado</h2>
+    <p id="resultado1"></p>
+  </div>
+  <!-- Para Opción 1 End -->
+  <!-- Para Opción 2 Start -->
+   <div id="promptCard2" ">
+    <h2>Ingreso de datos:</h2>
+    <div id="inputContainer2">
+      <label for="lados"></label>
+      <input type="text" name="lados" id="lados" placeholder="">
+    </div>
+    <button type="button" id="submit" onclick="submitForm()">Ingresar</button>
+  </div>
+  <div id="output2">
+    <h2>Resultado</h2>
+    <p id="resultado2"></p>
+  </div>
+  <!-- Para Opción 2 End --> 
+    <!-- Para Opción 3 Start -->
+    <div id="promptCard3" ">
+      <h2>Ingreso de datos:</h2>
+      <div id="inputContainer3">
+        <label for="lados"></label>
+        <input type="text" name="lados" id="lados" placeholder="">
+      </div>
+      <button type="button" id="submit" onclick="submitForm()">Ingresar</button>
+    </div>
+    <div id="output3">
+      <h2 id="resultado">Resultado</h2>
+    </div>
+    <!-- Para Opción 3 End --> 
+        <!-- Para Opción 4 Start -->
+        <div id="promptCard4" ">
+          <h2>Ingreso de datos:</h2>
+          <div id="inputContainer4">
+            <label for="lados"></label>
+            <input type="text" name="lados" id="lados" placeholder="">
+          </div>
+          <button type="button" id="submit" onclick="submitForm()">Ingresar</button>
+        </div>
+        <div id="output4">
+          <h2 id="resultado">Resultado</h2>
+        </div>
+        <!-- Para Opción 4 End --> 
+<script src="./js/index.js" defer></script>
+</body>
 </html>
