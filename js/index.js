@@ -101,6 +101,7 @@ const output4 = document.getElementById("output4");
 const length1 = parseFloat(document.getElementById("length1").value);
 const length2 = parseFloat(document.getElementById("length2").value);
 const length3 = parseFloat(document.getElementById("length3").value);
+//historial Local Storage
 
 function playButton() {
   document
@@ -307,8 +308,40 @@ function triangleMaster() {
       ).innerText = `Opción no válida. Por favor, elija una opción válida.`;
   }
 
-  function historial() {
-    
-    return alert("Gracias por usar Triangle Master. ¡Hasta luego!");;
+}
+
+// Function to save history to local storage
+function saveToLocalStorage() {
+  localStorage.setItem("triangleMasterHistory", JSON.stringify(history));
+}
+
+// Function to load history from local storage
+function loadFromLocalStorage() {
+  const storedHistory = localStorage.getItem("triangleMasterHistory");
+  return storedHistory ? JSON.parse(storedHistory) : [];
+}
+
+// Array to store history
+let history = loadFromLocalStorage();
+
+function historial() {
+  // Clear previous history
+  history.length = 0;
+
+  // Call triangleMaster for each option to populate the history
+  for (let i = 1; i <= 4; i++) {
+    option = i.toString();
+    triangleMaster();
+    // Save the result to history
+    history.push(document.getElementById(`resultado${i}`).innerText);
   }
+
+  // Display history in corresponding <p> elements
+  for (let i = 1; i <= 4; i++) {
+    const resultElement = document.getElementById(`resultado${i}`);
+    resultElement.innerText = `Historial: ${history[i - 1]}`;
+  }
+
+  // Save history to local storage
+  saveToLocalStorage();
 }

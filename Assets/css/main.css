@@ -2,19 +2,16 @@
     box-sizing: border-box;
   }
 body {
-    font-family: 'Arial', sans-serif;
+    max-width: 60%;
+    font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    margin: 50px;
+    margin: 0 auto;
     background-image: url("../Media/endless-constellation.svg");
-
-h1{
+}
+h1 {
     margin-top: 50px;
     font-family: 'Courier New', Courier, monospace;
-}
-p{
-    font-size: large;
-    font-family: 'Courier New', Courier, monospace;
-}
+} 
 .card {
     max-width: 400px;
     margin: auto;
