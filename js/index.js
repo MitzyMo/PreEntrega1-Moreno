@@ -297,7 +297,7 @@ function triangleMaster() {
       const base = parseFloat(document.getElementById("base").value);
       const height = parseFloat(document.getElementById("height").value);
       document.getElementById(
-        "resultado3"
+        "resultado4"
       ).innerText = `Área del triángulo: ${triangulo.calculateArea(base, height)}`;
       break;
 
