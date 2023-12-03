@@ -27,35 +27,45 @@
       </form>
   </div>
   <!-- Para Opción 1 Start -->
-  <div id="promptCard1" ">
+  <div id="promptCard1" style="display: none;">
     <h2>Ingreso de datos:</h2>
     <div id="inputContainer1">
-      <label for="angle"></label>
-      <input type="text" name="angle" id="angle" placeholder="">
+      <label for="angle1">Ingrese el primer ángulo</label>
+      <input type="text" name="angle" id="angle1" placeholder="Ángulo entre [0 y 180)">
+      <label for="angle2">Ingrese el segundo ángulo</label>
+      <input type="text" name="angle" id="angle2" placeholder="Ángulo entre [0 y 180)">
+      <label for="angle3">Ingrese el tercer ángulo</label>
+      <input type="text" name="angle" id="angle3" placeholder="Ángulo entre [0 y 180)">
     </div>
-    <button type="button" id="submit" onclick="submitForm()">Ingresar</button>
+    <button type="button" id="submit" onclick="submitForm()">Enviar</button>
   </div>
-  <div id="output1">
+  <div id="output1" style="display: none;">
     <h2>Resultado</h2>
+    <p></p>
     <p id="resultado1"></p>
   </div>
   <!-- Para Opción 1 End -->
   <!-- Para Opción 2 Start -->
-   <div id="promptCard2" ">
+  <div id="promptCard2" style="display: none;">
     <h2>Ingreso de datos:</h2>
     <div id="inputContainer2">
-      <label for="lados"></label>
-      <input type="text" name="lados" id="lados" placeholder="">
+      <label for="side1">Ingrese el primer lado</label>
+      <input type="text" name="side" id="side1" placeholder="Números reales positivos">
+      <label for="angle2">Ingrese el segundo ángulo</label>
+      <input type="text" name="side" id="side2" placeholder="Números reales positivos">
+      <label for="side3">Ingrese el tercer ángulo</label>
+      <input type="text" name="angle" id="side3" placeholder="Números reales positivos">
     </div>
-    <button type="button" id="submit" onclick="submitForm()">Ingresar</button>
+    <button type="button" id="submit" onclick="submitForm()">Enviar</button>
   </div>
-  <div id="output2">
+  <div id="output2" style="display: none;">
     <h2>Resultado</h2>
+    <p></p>
     <p id="resultado2"></p>
   </div>
   <!-- Para Opción 2 End --> 
     <!-- Para Opción 3 Start -->
-    <div id="promptCard3" ">
+    <div id="promptCard3" style="display: none;">
       <h2>Ingreso de datos:</h2>
       <div id="inputContainer3">
         <label for="lados"></label>
@@ -63,12 +73,12 @@
       </div>
       <button type="button" id="submit" onclick="submitForm()">Ingresar</button>
     </div>
-    <div id="output3">
+    <div id="output3" style="display: none;">
       <h2 id="resultado">Resultado</h2>
     </div>
     <!-- Para Opción 3 End --> 
         <!-- Para Opción 4 Start -->
-        <div id="promptCard4" ">
+        <div id="promptCard4" style="display: none;">
           <h2>Ingreso de datos:</h2>
           <div id="inputContainer4">
             <label for="lados"></label>
@@ -76,7 +86,7 @@
           </div>
           <button type="button" id="submit" onclick="submitForm()">Ingresar</button>
         </div>
-        <div id="output4">
+        <div id="output4" style="display: none;">
           <h2 id="resultado">Resultado</h2>
         </div>
         <!-- Para Opción 4 End --> 

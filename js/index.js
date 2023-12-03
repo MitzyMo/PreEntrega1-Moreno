@@ -78,124 +78,165 @@ class Triangulo {
   }
 }
 const triangulo = new Triangulo();
-const promptCard = document.getElementById("promptCard");
-const inputContainer = document.getElementById("inputContainer");
-const output = document.getElementById("output");
-const lados = [];
 let option = document.getElementById("option").value;
+const promptCard1 = document.getElementById("promptCard1");
+const inputContainer1 = document.getElementById("inputContainer1");
+const output1 = document.getElementById("output1");
+const promptCard2 = document.getElementById("promptCard2");
+const inputContainer2 = document.getElementById("inputContainer2");
+const output2 = document.getElementById("output2");
+const promptCard3 = document.getElementById("promptCard3");
+const inputContainer3 = document.getElementById("inputContainer3");
+const output3 = document.getElementById("output3");
+const promptCard4 = document.getElementById("promptCard4");
+const inputContainer4 = document.getElementById("inputContainer4");
+const output4 = document.getElementById("output4");
+const lados = [];
 
 console.log(option);
-console.log(inputContainer);
+console.log(promptCard1);
+console.log(inputContainer1);
+console.log(output1);
+
+function playButton() {
+  document.getElementById("triangleForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+    submitForm();
+  });
+}
+
 function submitForm() {
-  // Reset promptCard content
-  promptCard.innerHTML = "";
-  inputContainer.innerHTML = "";
+
   //Game Options
   switch (option) {
     case "1":
-      for (let i = 0; i < 3; i++) {
-        // Create input box for each angle
-        const inputLabel = document.createElement("label");
-        inputLabel.textContent = `Ingrese el ángulo ${i + 1} del triángulo:`;
-        inputContainer.appendChild(inputLabel);
-
-        const input = document.createElement("input");
-        input.id = `angle${i + 1}`;
-        input.type = "number";
-        input.placeholder = `Ángulo ${i + 1}`;
-        inputContainer.appendChild(input);
-      }
-
-      // Create a submit button for angles
-      const submitButton = document.createElement("button");
-      submitButton.textContent = "Submit Angles";
-      submitButton.addEventListener("click", function () {
-        const angles = [];
-        for (let i = 0; i < 3; i++) {
-          const input = document.getElementById(`angle${i + 1}`);
-          const angleValue = parseFloat(input.value);
-          angles.push(angleValue);
-        }
-
-        // Set the angles in the triangulo object
-        triangulo.setAngulos(angles);
-
-        // Reset promptCard content
-        promptCard.innerHTML = "";
-
-        // Inside the case 1 block, after validating the triangle:
-        if (triangulo.validateTriangle()) {
-          output.innerHTML = `<p>Clasificación por ángulos: ${triangulo.classifyByAngulos()}</p>`;
-        } else {
-          output.innerHTML =
-            "<p>Los ángulos no cumplen con las características necesarias para formar un triángulo</p>";
-        }
-
- 
-      });
-
-      inputContainer.appendChild(submitButton);
+      // Show the promptCard and hide the output
+      promptCard1.style.display = "block";
+      output1.style.display = "block";
+      promptCard2.style.display = "none";
+      output2.style.display = "none";
+      promptCard3.style.display = "none";
+      output3.style.display = "none";
+      promptCard4.style.display = "none";
+      output4.style.display = "none";      
+      function triangleMaster(){};
       break;
 
     case "2":
-      for (let i = 0; i < 3; i++) {
-        const side = parseFloat(
-          prompt(`Ingrese la longitud del lado ${i + 1} del triángulo:`)
-        );
-        promptCard.innerHTML += `<p>Longitud del lado ${i + 1}: ${side}</p>`;
-        lados.push(side);
-      }
-      triangulo.setLados(lados);
-      promptCard.innerHTML += `<p>Clasificación por lados: ${triangulo.classifyByLados()}</p>`;
+      // Show the promptCard and hide the output
+      promptCard1.style.display = "none";
+      output1.style.display = "none";
+      promptCard2.style.display = "block";
+      output2.style.display = "block";
+      promptCard3.style.display = "none";
+      output3.style.display = "none";
+      promptCard4.style.display = "none";
+      output4.style.display = "none";      
+      function triangleMaster(){};
       break;
 
     case "3":
-      for (let i = 0; i < 3; i++) {
-        const side = parseFloat(
-          prompt(`Ingrese la longitud del lado ${i + 1} del triángulo:`)
-        );
-        promptCard.innerHTML += `<p>Longitud del lado ${i + 1}: ${side}</p>`;
-        lados.push(side);
-      }
-      triangulo.setLados(lados);
-      promptCard.innerHTML += `<p>Perímetro del triángulo: ${triangulo.calculatePerimeter()}</p>`;
+      // Show the promptCard and hide the output
+      promptCard1.style.display = "none";
+      output1.style.display = "none";
+      promptCard2.style.display = "none";
+      output2.style.display = "none";
+      promptCard3.style.display = "block";
+      output3.style.display = "block";
+      promptCard4.style.display = "none";
+      output4.style.display = "none";      
+      function triangleMaster(){};
       break;
 
     case "4":
-      const base = parseFloat(
-        prompt("Ingrese la longitud de la base del triángulo:")
-      );
-      const height = parseFloat(prompt("Ingrese la altura del triángulo:"));
-      promptCard.innerHTML += `<p>Longitud de la base: ${base}</p>`;
-      promptCard.innerHTML += `<p>Altura: ${height}</p>`;
-      promptCard.innerHTML += `<p>Área del triángulo: ${triangulo.calculateArea(
-        base,
-        height
-      )}</p>`;
+      // Show the promptCard and hide the output
+      promptCard1.style.display = "none";
+      output1.style.display = "none";
+      promptCard2.style.display = "none";
+      output2.style.display = "none";
+      promptCard3.style.display = "none";
+      output3.style.display = "none";
+      promptCard4.style.display = "block";
+      output4.style.display = "block";      
+      function triangleMaster(){};
       break;
-
-    case "5":
-      promptCard.innerHTML +=
-        "<p>Gracias por usar Triangle Master. ¡Hasta luego!</p>";
-      break;
+      
 
     default:
-      promptCard.innerHTML +=
-        "<p>Opción no válida. Por favor, elija una opción válida.</p>";
-  }
+      alert("Opción no válida. Por favor, elija una opción válida.");
+    }
 
-  // Show the promptCard and hide the output
-  promptCard.style.display = "block";
-  output.style.display = "none";
-}
-console.log(inputContainer);
+
+
 function triangleMaster() {
-  document
-    .getElementById("triangleForm")
-    .addEventListener("submit", function (event) {
-      event.preventDefault();
-      submitForm();
-    });
+
+  alert("¡Bienvenido a Triangle Master!\n\nTriangleMaster es un juego interactivo que te permite explorar el fascinante mundo de los triángulos. Conviértete en un maestro de la geometría mientras clasificas triángulos por sus ángulos y lados. ¿Serás capaz de identificar un triángulo equilátero, rectángulo o isósceles? ¡Sumérgete en TriangleMaster y mejora tus habilidades matemáticas de manera divertida y educativa!\n\n");
+
+  do {
+    opcion = prompt(`
+      Menú de opciones:
+      1. Clasificación por ángulos
+      2. Clasificación por lados
+      3. Calcular perímetro
+      4. Calcular área
+      5. Salir
+    `);
+
+    const lados = []; // Moved this line inside the loop
+
+    switch (opcion) {
+      case '1':
+        // Establecer ángulos
+        const angulos = [];
+        for (let i = 0; i < 3; i++) {
+          angulos.push(parseFloat(prompt(`Ingrese el ángulo ${i + 1} del triángulo: `)));
+        }
+        triangulo.setAngulos(angulos);
+
+        if (triangulo.validateTriangle()) {
+          alert(`Clasificación por ángulos: ${triangulo.classifyByAngulos()}`);
+        } else {
+          alert(`Los ángulos no cumplen con las características necesarias para hacer un triángulo`);
+        }
+        break;
+
+      case '2':
+        // Establecer lados
+        for (let i = 0; i < 3; i++) {
+          lados.push(parseFloat(prompt(`Ingrese la longitud del lado ${i + 1} del triángulo: `)));
+        }
+        triangulo.setLados(lados);
+        alert(`Clasificación por lados: ${triangulo.classifyByLados()}`);
+        break;
+
+      case '3':
+        // Establecer lados
+        for (let i = 0; i < 3; i++) {
+          lados.push(parseFloat(prompt(`Ingrese la longitud del lado ${i + 1} del triángulo: `)));
+        }
+        triangulo.setLados(lados);
+        // Calcular perímetro
+        alert(`Perímetro del triángulo: ${triangulo.calculatePerimeter()}`);
+        break;
+
+      case '4':
+        // Calcular área
+        const base = parseFloat(prompt("Ingrese la longitud de la base del triángulo:"));
+        const height = parseFloat(prompt("Ingrese la altura del triángulo:"));
+        alert(`Área del triángulo: ${triangulo.calculateArea(base, height)}`);
+        break;
+
+      case '5':
+        // Salir
+        alert("Gracias por usar Triangle Master. ¡Hasta luego!");
+        break;
+
+      default:
+        alert("Opción no válida. Por favor, elija una opción válida.");
+    }
+  } while (opcion !== '5');
 }
+
 // Ejecutar el programa Triangle Master
 triangleMaster();
+}
