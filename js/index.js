@@ -339,7 +339,11 @@ function historial() {
   // Display history in corresponding <p> elements
   for (let i = 1; i <= 4; i++) {
     const resultElement = document.getElementById(`resultado${i}`);
-    resultElement.innerText = `Historial: ${history[i - 1]}`;
+    if (history.length > 0) {
+      resultElement.innerText = `Historial: ${history[i - 1]}`;
+    } else {
+      resultElement.innerText = "No hay historial disponible.";
+    }
   }
 
   // Save history to local storage
