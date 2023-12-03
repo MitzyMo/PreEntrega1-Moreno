@@ -1,6 +1,6 @@
 # CoderHouse Project
 # 💫 About Me:
- 🌱 I'm currently learning web development. 
+ 🌱 I'm currently learning web development and JavaScript. 
 
 
 ## 🌐 Socials:
