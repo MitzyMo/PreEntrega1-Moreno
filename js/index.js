@@ -15,11 +15,12 @@ class Triangulo {
   }
 
   validateTriangle() {
-    console.log(this.angulos);
     // Verificar que ninguno de los ángulos sea menor que 0 o mayor o igual a 180°
     for (let i = 0; i < this.angulos.length; i++) {
       if (this.angulos[i] < 0 || this.angulos[i] >= 180) {
-        console.log("Error: Los ángulos deben estar en el rango [0, 180).");
+        document.getElementById(
+          "resultado1"
+        ).innerText = `Error: Los ángulos deben estar en el rango [0, 180).`;
         return false; // El triángulo no es válido
       }
     }
@@ -27,7 +28,9 @@ class Triangulo {
     // Verificar que la suma de los ángulos sea igual a 180
     const sumaAngulos = this.angulos.reduce((acc, val) => acc + val, 0);
     if (sumaAngulos !== 180) {
-      console.log("Error: La suma de los ángulos debe ser igual a 180 grados.");
+      document.getElementById(
+        "resultado1"
+      ).innerText = `Error: La suma de los ángulos debe ser igual a 180 grados.`;
       return false; // El triángulo no es válido
     }
 
@@ -36,37 +39,21 @@ class Triangulo {
     return true;
   }
 
-  // Métodos para clasificar el triángulo por ángulos y lados
+  // Métodos para clasificar el triángulo por ángulos y lados con operador ternario
   classifyByAngulos() {
-    if (
-      this.angulos[0] === 90 ||
-      this.angulos[1] === 90 ||
-      this.angulos[2] === 90
-    ) {
-      return "Rectángulo";
-    } else if (
-      this.angulos[0] < 90 &&
-      this.angulos[1] < 90 &&
-      this.angulos[2] < 90
-    ) {
-      return "Acutángulo";
-    } else {
-      return "Obtusángulo";
-    }
+    return this.angulos[0] === 90 || this.angulos[1] === 90 || this.angulos[2] === 90
+      ? "Rectángulo"
+      : this.angulos[0] < 90 && this.angulos[1] < 90 && this.angulos[2] < 90
+      ? "Acutángulo"
+      : "Obtusángulo";
   }
 
   classifyByLados() {
-    if (this.lados[0] === this.lados[1] && this.lados[1] === this.lados[2]) {
-      return "Equilátero";
-    } else if (
-      this.lados[0] === this.lados[1] ||
-      this.lados[0] === this.lados[2] ||
-      this.lados[1] === this.lados[2]
-    ) {
-      return "Isósceles";
-    } else {
-      return "Escaleno";
-    }
+    return this.lados[0] === this.lados[1] && this.lados[1] === this.lados[2]
+      ? "Equilátero"
+      : this.lados[0] === this.lados[1] || this.lados[0] === this.lados[2] || this.lados[1] === this.lados[2]
+      ? "Isósceles"
+      : "Escaleno";
   }
 
   // Métodos para calcular el perímetro y el área del triángulo
@@ -83,8 +70,6 @@ class Triangulo {
 
 const triangulo = new Triangulo();
 let option;
-const inputContainer = document.querySelector(".inputContainer");
-const output = document.querySelector(".output");
 const promptCard1 = document.getElementById("promptCard1");
 const inputContainer1 = document.getElementById("inputContainer1");
 const output1 = document.getElementById("output1");
@@ -97,11 +82,6 @@ const output3 = document.getElementById("output3");
 const promptCard4 = document.getElementById("promptCard4");
 const inputContainer4 = document.getElementById("inputContainer4");
 const output4 = document.getElementById("output4");
-// Get the input elements
-const length1 = parseFloat(document.getElementById("length1").value);
-const length2 = parseFloat(document.getElementById("length2").value);
-const length3 = parseFloat(document.getElementById("length3").value);
-//historial Local Storage
 
 function playButton() {
   document
@@ -144,7 +124,35 @@ function enviarButton4() {
       triangleMaster();
     });
 }
+//Permitir solo dígitos en el campo de imput
+function allowOnlyDigits(event) {
+  const keyCode = event.which || event.keyCode;
+  const inputCharacter = String.fromCharCode(keyCode);
+  const valEx = /\d/;
 
+  // Allow backspace, delete, left arrow, right arrow, and tab
+  if (
+    (valEx.test(inputCharacter)) ||
+    keyCode === 8 ||
+    keyCode === 46 ||
+    keyCode === 37 ||
+    keyCode === 39 ||
+    keyCode === 9
+  ) {
+    return true;
+  } else {
+    event.preventDefault();
+    return false;
+  }
+}
+
+// Attach the allowOnlyDigits function to each input field
+const inputFields = document.querySelectorAll('input[type="number"]');
+inputFields.forEach((inputField) => {
+  inputField.addEventListener('keypress', allowOnlyDigits);
+});
+
+//Botón de Jugar.
 function submitForm() {
   option = document.getElementById("option").value;
   //Game Options
@@ -160,8 +168,8 @@ function submitForm() {
       promptCard4.style.display = "none";
       output4.style.display = "none";
       // Scroll to the element with the class "inputContainer"
-      if (inputContainer) {
-        inputContainer.scrollIntoView({ behavior: "smooth" });
+      if (inputContainer1) {
+        inputContainer1.scrollIntoView({ behavior: "smooth" });
       }
       break;
 
@@ -176,8 +184,8 @@ function submitForm() {
       promptCard4.style.display = "none";
       output4.style.display = "none";
       // Scroll to the element with the class "inputContainer"
-      if (inputContainer) {
-        inputContainer.scrollIntoView({ behavior: "smooth" });
+      if (inputContainer2) {
+        inputContainer2.scrollIntoView({ behavior: "smooth" });
       }
       break;
 
@@ -192,8 +200,8 @@ function submitForm() {
       promptCard4.style.display = "none";
       output4.style.display = "none";
       // Scroll to the element with the class "inputContainer"
-      if (inputContainer) {
-        inputContainer.scrollIntoView({ behavior: "smooth" });
+      if (inputContainer3) {
+        inputContainer3.scrollIntoView({ behavior: "smooth" });
       }
       break;
 
@@ -208,8 +216,8 @@ function submitForm() {
       promptCard4.style.display = "block";
       output4.style.display = "block";
       // Scroll to the element with the class "inputContainer" o "OUTPUT"
-      if (inputContainer) {
-        inputContainer.scrollIntoView({ behavior: "smooth" });
+      if (inputContainer4) {
+        inputContainer4.scrollIntoView({ behavior: "smooth" });
       }
       break;
 
@@ -223,7 +231,9 @@ function submitForm() {
       output2.style.display = "block";
       output3.style.display = "block";
       output4.style.display = "block";
-      output.scrollIntoView({ behavior: "smooth" });
+      if (output1) {
+        output1.scrollIntoView({ behavior: "smooth" });
+      }
       historial();
       break;
 
@@ -238,9 +248,8 @@ function submitForm() {
         "resultado1"
       ).innerText = `Opción no válida. Por favor, elija una opción válida.`;
   }
-
-  console.log("Inside Submit", option);
 }
+
 
 function triangleMaster() {
   const lados = []; // Moved this line inside the loop
@@ -257,10 +266,12 @@ function triangleMaster() {
       angulos.push(angle1, angle2, angle3);
       // Pass the 'angulos' array to setAngulos
       triangulo.setAngulos(angulos);
-      // Scroll to the element with the class "inputContainer" o "OUTPUT"
-      output.scrollIntoView({ behavior: "smooth" });
-   //Mostrar Clasificación si cumple con los requerimientos.
+      //Mostrar Clasificación si cumple con los requerimientos.
       if (triangulo.validateTriangle()) {
+        // Scroll to the element with the class "inputContainer" o "OUTPUT"
+        if (output1) {
+          output1.scrollIntoView({ behavior: "smooth" });
+        }
         document.getElementById(
           "resultado1"
         ).innerText = `Clasificación por ángulos: ${triangulo.classifyByAngulos()}`;
@@ -272,10 +283,18 @@ function triangleMaster() {
       break;
 
     case "2":
+      // Get the input elements
+      const length1 = parseFloat(document.getElementById("length1").value);
+      const length2 = parseFloat(document.getElementById("length2").value);
+      const length3 = parseFloat(document.getElementById("length3").value);
       // Push datos to Array
       lados.push(length1, length2, length3);
       // Pass the 'angulos' array to setAngulos
       triangulo.setLados(lados);
+      // Scroll to the element with the class "inputContainer" o "OUTPUT"
+      if (output2) {
+        output2.scrollIntoView({ behavior: "smooth" });
+      }
       //Mostrar Clasificación
       document.getElementById(
         "resultado2"
@@ -283,9 +302,16 @@ function triangleMaster() {
       break;
 
     case "3":
-      lados.push(length1, length2, length3);
+      const lengthP1 = parseFloat(document.getElementById("lengthP1").value);
+      const lengthP2 = parseFloat(document.getElementById("lengthP2").value);
+      const lengthP3 = parseFloat(document.getElementById("lengthP3").value);
+      lados.push(lengthP1, lengthP2, lengthP3);
       // Pass the 'angulos' array to setAngulos
       triangulo.setLados(lados);
+      // Scroll to the element with the class "inputContainer" o "OUTPUT"
+      if (output3) {
+        output3.scrollIntoView({ behavior: "smooth" });
+      }
       //Mostrar perimetro
       document.getElementById(
         "resultado3"
@@ -296,18 +322,24 @@ function triangleMaster() {
       // Calcular área
       const base = parseFloat(document.getElementById("base").value);
       const height = parseFloat(document.getElementById("height").value);
+      // Scroll to the element with the class "inputContainer" o "OUTPUT"
+      if (output4) {
+        output4.scrollIntoView({ behavior: "smooth" });
+      }
       document.getElementById(
         "resultado4"
-      ).innerText = `Área del triángulo: ${triangulo.calculateArea(base, height)}`;
+      ).innerText = `Área del triángulo: ${triangulo.calculateArea(
+        base,
+        height
+      )}`;
       break;
 
     default:
       output1.style.display = "block";
       document.getElementById(
         "resultado1"
-      ).innerText = `Opción no válida. Por favor, elija una opción válida.`;
+      ).innerText = `Aquí se desplegará el resultado de sus cálculos`;
   }
-
 }
 
 // Function to save history to local storage
@@ -324,24 +356,34 @@ function loadFromLocalStorage() {
 // Array to store history
 let history = loadFromLocalStorage();
 
+//Guarda el último cálculo y lo muestra en pantalla.
 function historial() {
-  // Clear previous history
-  history.length = 0;
+  // // Clear previous history
+  // history.length = 0;
 
   // Call triangleMaster for each option to populate the history
   for (let i = 1; i <= 4; i++) {
     option = i.toString();
     triangleMaster();
-    // Save the result to history
-    history.push(document.getElementById(`resultado${i}`).innerText);
+
+    // Get the result
+    const result = document.getElementById(`resultado${i}`).innerText;
+
+    // Check if the result is not "No hay historial disponible."
+    if (result !== "No hay historial disponible.") {
+      // Save the result to history
+      history.push(`Último resultado: ${result}`);
+    }
   }
 
   // Display history in corresponding <p> elements
   for (let i = 1; i <= 4; i++) {
     const resultElement = document.getElementById(`resultado${i}`);
-    if (history.length > 0) {
-      resultElement.innerText = `Historial: ${history[i - 1]}`;
+    if (history.length >= i) {
+      // Display history if available
+      resultElement.innerText = history[i - 1];
     } else {
+      // Set default message if no history for this element
       resultElement.innerText = "No hay historial disponible.";
     }
   }
