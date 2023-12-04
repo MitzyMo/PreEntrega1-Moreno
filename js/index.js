@@ -229,7 +229,7 @@ function submitForm() {
       output3.style.display = "none";
       promptCard4.style.display = "block";
       output4.style.display = "block";
-      // Scroll to the element with the class "inputContainer" o "OUTPUT"
+        // Scroll to the element with the class "inputContainer"
       if (inputContainer4) {
         inputContainer4.scrollIntoView({ behavior: "smooth" });
       }
@@ -265,7 +265,7 @@ function submitForm() {
 }
 
 function triangleMaster() {
-  const lados = []; // Moved this line inside the loop
+  const lados = [];
 
   switch (option) {
     case "1":
@@ -304,7 +304,7 @@ function triangleMaster() {
       lados.push(length1, length2, length3);
       // Pass the 'angulos' array to setAngulos
       triangulo.setLados(lados);
-      // Scroll to the element with the class "inputContainer" o "OUTPUT"
+        // Scroll to the element with the class "OUTPUT"
       if (output2) {
         output2.scrollIntoView({ behavior: "smooth" });
       }
@@ -321,7 +321,7 @@ function triangleMaster() {
       lados.push(lengthP1, lengthP2, lengthP3);
       // Pass the 'angulos' array to setAngulos
       triangulo.setLados(lados);
-      // Scroll to the element with the class "inputContainer" o "OUTPUT"
+      // Scroll to the element with the class "OUTPUT"
       if (output3) {
         output3.scrollIntoView({ behavior: "smooth" });
       }
@@ -338,7 +338,7 @@ function triangleMaster() {
       triangulo.setBase(base);
       triangulo.setHeight(height);
       const areaResult = triangulo.calculateArea();
-      // Scroll to the element with the class "inputContainer" o "OUTPUT"
+        // Scroll to the element with the class "OUTPUT"
       if (output4) {
         output4.scrollIntoView({ behavior: "smooth" });
       }
