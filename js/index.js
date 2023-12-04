@@ -3,6 +3,8 @@ class Triangulo {
     // Inicializar propiedades del triángulo
     this.angulos = [0, 0, 0];
     this.lados = [0, 0, 0];
+    this.height = 0;
+    this.base = 0;
   }
 
   // Métodos para establecer los ángulos y lados del triángulo
@@ -12,6 +14,14 @@ class Triangulo {
 
   setLados(lados) {
     this.lados = lados;
+  }
+
+  setHeight(height){
+    this.height = height;
+  }
+
+  setBase(base){
+    this.base = base;
   }
 
   validateTriangle() {
@@ -41,7 +51,9 @@ class Triangulo {
 
   // Métodos para clasificar el triángulo por ángulos y lados con operador ternario
   classifyByAngulos() {
-    return this.angulos[0] === 90 || this.angulos[1] === 90 || this.angulos[2] === 90
+    return this.angulos[0] === 90 ||
+      this.angulos[1] === 90 ||
+      this.angulos[2] === 90
       ? "Rectángulo"
       : this.angulos[0] < 90 && this.angulos[1] < 90 && this.angulos[2] < 90
       ? "Acutángulo"
@@ -51,7 +63,9 @@ class Triangulo {
   classifyByLados() {
     return this.lados[0] === this.lados[1] && this.lados[1] === this.lados[2]
       ? "Equilátero"
-      : this.lados[0] === this.lados[1] || this.lados[0] === this.lados[2] || this.lados[1] === this.lados[2]
+      : this.lados[0] === this.lados[1] ||
+        this.lados[0] === this.lados[2] ||
+        this.lados[1] === this.lados[2]
       ? "Isósceles"
       : "Escaleno";
   }
@@ -61,8 +75,8 @@ class Triangulo {
     return this.lados[0] + this.lados[1] + this.lados[2];
   }
 
-  calculateArea(base, height) {
-    return (base * height) / 2;
+  calculateArea() {
+    return (this.base * this.height) / 2;
   }
 }
 
@@ -132,7 +146,7 @@ function allowOnlyDigits(event) {
 
   // Allow backspace, delete, left arrow, right arrow, and tab
   if (
-    (valEx.test(inputCharacter)) ||
+    valEx.test(inputCharacter) ||
     keyCode === 8 ||
     keyCode === 46 ||
     keyCode === 37 ||
@@ -149,7 +163,7 @@ function allowOnlyDigits(event) {
 // AllowOnlyDigits function to each input field
 const inputFields = document.querySelectorAll('input[type="number"]');
 inputFields.forEach((inputField) => {
-  inputField.addEventListener('keypress', allowOnlyDigits);
+  inputField.addEventListener("keypress", allowOnlyDigits);
 });
 
 //Botón de Jugar.
@@ -250,7 +264,6 @@ function submitForm() {
   }
 }
 
-
 function triangleMaster() {
   const lados = []; // Moved this line inside the loop
 
@@ -322,16 +335,16 @@ function triangleMaster() {
       // Calcular área
       const base = parseFloat(document.getElementById("base").value);
       const height = parseFloat(document.getElementById("height").value);
+      triangulo.setBase(base);
+      triangulo.setHeight(height);
+      const areaResult = triangulo.calculateArea();
       // Scroll to the element with the class "inputContainer" o "OUTPUT"
       if (output4) {
         output4.scrollIntoView({ behavior: "smooth" });
       }
       document.getElementById(
         "resultado4"
-      ).innerText = `Área del triángulo: ${triangulo.calculateArea(
-        base,
-        height
-      )}`;
+      ).innerText = `Área del triángulo: ${areaResult}`;
       break;
 
     default:
@@ -356,35 +369,36 @@ function loadFromLocalStorage() {
 // Array to store history
 let history = loadFromLocalStorage();
 
-//Guarda el último cálculo y lo muestra en pantalla.
 function historial() {
-  // Clear previous history
-    history.length = 0;
+  // Retrieve results from the corresponding elements
+  const result1 = triangulo.classifyByAngulos();
+  const result2 = triangulo.classifyByLados();
+  const result3 = triangulo.calculatePerimeter();
+  const result4 = triangulo.calculateArea();
 
-  // Call triangleMaster for each option to populate the history
-  function historial() {
-    // Clear previous history
-    history.length = 0;
-  
-    // Call triangleMaster for each option to populate the history
-    for (let i = 1; i <= 4; i++) {
-      option = i.toString();
-      triangleMaster();
-      // Save the result to history
-      history.push(document.getElementById(`resultado${i}`).innerText);
-    }
-  
-    // Display history in corresponding <p> elements
-    for (let i = 1; i <= 4; i++) {
-      const resultElement = document.getElementById(`resultado${i}`);
-      if (history.length > 0) {
-        resultElement.innerText = `Historial: ${history[i - 1]}`;
-      } else {
-        resultElement.innerText = "No hay historial disponible.";
-      }
-    }
-  
-    // Save history to local storage
-    saveToLocalStorage();
-  }
+  // Validate if the result is a valid number and not undefined
+  const isValidResult1 = result1 !== undefined;
+  const isValidResult2 = result2 !== undefined;
+  const isValidResult3 = !isNaN(result3);
+  const isValidResult4 = !isNaN(result4);
+
+  // Create an object with the results
+  const historyEntry = {
+    result1: isValidResult1 ? result1 : "Esta opción no se ha usado",
+    result2: isValidResult2 ? result2 : "Esta opción no se ha usado",
+    result3: isValidResult3 ? result3 : "Esta opción no se ha usado",
+    result4: isValidResult4 ? result4 : "Esta opción no se ha usado",
+  };
+
+  // Add the entry to the history array
+  history.push(historyEntry);
+
+  // Save the history to local storage
+  saveToLocalStorage();
+
+  // Update innerText of the corresponding elements
+  document.getElementById("resultado1").innerText = historyEntry.result1;
+  document.getElementById("resultado2").innerText = historyEntry.result2;
+  document.getElementById("resultado3").innerText = historyEntry.result3;
+  document.getElementById("resultado4").innerText = historyEntry.result4;
 }
