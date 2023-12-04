@@ -146,7 +146,7 @@ function allowOnlyDigits(event) {
   }
 }
 
-// Attach the allowOnlyDigits function to each input field
+// AllowOnlyDigits function to each input field
 const inputFields = document.querySelectorAll('input[type="number"]');
 inputFields.forEach((inputField) => {
   inputField.addEventListener('keypress', allowOnlyDigits);
@@ -358,36 +358,33 @@ let history = loadFromLocalStorage();
 
 //Guarda el último cálculo y lo muestra en pantalla.
 function historial() {
-  // // Clear previous history
-  // history.length = 0;
+  // Clear previous history
+    history.length = 0;
 
   // Call triangleMaster for each option to populate the history
-  for (let i = 1; i <= 4; i++) {
-    option = i.toString();
-    triangleMaster();
-
-    // Get the result
-    const result = document.getElementById(`resultado${i}`).innerText;
-
-    // Check if the result is not "No hay historial disponible."
-    if (result !== "No hay historial disponible.") {
+  function historial() {
+    // Clear previous history
+    history.length = 0;
+  
+    // Call triangleMaster for each option to populate the history
+    for (let i = 1; i <= 4; i++) {
+      option = i.toString();
+      triangleMaster();
       // Save the result to history
-      history.push(`Último resultado: ${result}`);
+      history.push(document.getElementById(`resultado${i}`).innerText);
     }
-  }
-
-  // Display history in corresponding <p> elements
-  for (let i = 1; i <= 4; i++) {
-    const resultElement = document.getElementById(`resultado${i}`);
-    if (history.length >= i) {
-      // Display history if available
-      resultElement.innerText = history[i - 1];
-    } else {
-      // Set default message if no history for this element
-      resultElement.innerText = "No hay historial disponible.";
+  
+    // Display history in corresponding <p> elements
+    for (let i = 1; i <= 4; i++) {
+      const resultElement = document.getElementById(`resultado${i}`);
+      if (history.length > 0) {
+        resultElement.innerText = `Historial: ${history[i - 1]}`;
+      } else {
+        resultElement.innerText = "No hay historial disponible.";
+      }
     }
+  
+    // Save history to local storage
+    saveToLocalStorage();
   }
-
-  // Save history to local storage
-  saveToLocalStorage();
 }
