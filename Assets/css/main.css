@@ -1,232 +1,283 @@
-
 /* Global CSS that are applied for all screen sizes */
 * {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-decoration: none;
-    font-family: "futura md bt";
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: "futura md bt";
+  box-sizing: border-box;
 }
 /*----- HEADER START -----*/
-header{
-    background-color: #fff;
-    opacity: 80%;
-    width: 100%;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 100px;
+header {
+  background-color: #fff;
+  opacity: 80%;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px;
 }
 .logo {
-    font-size: 30px;
-    text-transform: uppercase;
+  font-size: 30px;
+  text-transform: uppercase;
 }
 .hamburger {
-    display: none;
+  display: none;
 }
 
-.nav-bar ul{
-    display: flex;
+.nav-bar ul {
+  display: flex;
 }
 
-.nav-bar ul li a{
-    display: block;
-    color: #000;
-    font-size: 20px;
-    padding: 10px 25px;
-    transition: 0.1s;
-    margin: 0 5px;
-    border-radius: 20%;
+.nav-bar ul li a {
+  display: block;
+  color: #000;
+  font-size: 20px;
+  padding: 10px 25px;
+  transition: 0.1s;
+  margin: 0 5px;
+  border-radius: 20%;
 }
 .nav-bar ul li a:active,
-.nav-bar ul li a:hover{
-    border-bottom-style: inset;
-    border-bottom-color: dodgerblue;
+.nav-bar ul li a:hover {
+  border-bottom-style: inset;
+  border-bottom-color: dodgerblue;
 }
 .hamburger div {
-    width: 30px;
-    height: 3px;
-    margin: 5px 0;
-    background: #000;
+  width: 30px;
+  height: 3px;
+  margin: 5px 0;
+  background: #000;
 }
 @media only screen and (max-width: 1320px) {
-    header {
-        padding: 10px 50px;
-    }
+  header {
+    padding: 10px 50px;
+  }
 }
 @media only screen and (max-width: 1100px) {
-    header {
-        padding: 10px 30px;
-    }
+  header {
+    padding: 10px 30px;
+  }
 }
 @media only screen and (max-width: 760px) {
-    .hamburger {
-        display: block;
-        cursor: pointer;
-    }
-    .hamburger .line{
-        width: 30px;
-        height: 3px;
-        background-color: #000;
-        margin: 6px 0;
-    }
-    .nav-bar {
-        height: 0;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        width: 100vw;
-        background: #fff;
-        padding: 30px;
-        transition: 0.5s;
-        overflow: hidden;
-    }
-    .nav-bar.active {
-        height: 450px;
-    }
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+  .hamburger .line {
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+    margin: 6px 0;
+  }
+  .nav-bar {
+    height: 0;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    background: #fff;
+    padding: 30px;
+    transition: 0.5s;
+    overflow: hidden;
+  }
+  .nav-bar.active {
+    height: 450px;
+  }
 
-    .nav-bar ul {
-        display: block;
-        width: fit-content;
-        margin: 70px auto 0 auto;
-        text-align: center;
-        transition: 0.5s;
-        opacity: 0;
-    }
-    .nav-bar.active ul {
-        opacity: 1;
-    }
+  .nav-bar ul {
+    display: block;
+    width: fit-content;
+    margin: 70px auto 0 auto;
+    text-align: center;
+    transition: 0.5s;
+    opacity: 0;
+  }
+  .nav-bar.active ul {
+    opacity: 1;
+  }
 
-    .nav-bar ul li a {
-        margin: 12px 0;
-    }
+  .nav-bar ul li a {
+    margin: 12px 0;
+  }
 }
 /*----- HEADER END -----*/
 
 /*----- BODY START -----*/
 body {
-    text-align: center;
-    margin: 0 auto;
-    background-image: url("../Media/endless-constellation.svg");
+  text-align: center;
+  margin: 0 auto;
+  background-image: url("../Media/endless-constellation.svg");
 }
-.main-index{
-    margin-top: 100px;
+.main-index,
+.main-tutorial {
+  margin-top: 70px;
 }
-.main-index-title {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 50px;
-} 
-.main-index-card{
-    max-width: 80%;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    font-size: 30px;
+.main-index-title,
+.main-tutorial-title {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 50px;
 }
-
-#card1, #card2, #card3 {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: white;
+.main-index-card {
+  max-width: 80%;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  font-size: 30px;
 }
 
+#card1,
+#card2,
+#card3 {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
 
 .card {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: white;
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+.card h2 {
+  margin: 20px;
+}
+
+.card option {
+  font-size: 20px;
 }
 
 select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-input{
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
-#output1, #output2, #output3, #output4 {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    background-color: #ccc;
+#output1,
+#output2,
+#output3,
+#output4 {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  background-color: #ccc;
 }
-
-#promptCard1, #promptCard2,#promptCard3,#promptCard4 {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    background-color: white;
+#output1 h2,
+#output2 h2,
+#output3 h2,
+#output4 h2 {
+  padding: 20px;
 }
-
+#output1 p,
+#output2 p,
+#output3 p,
+#output4 p {
+  font-size: 20px;
+}
+#promptCard1,
+#promptCard2,
+#promptCard3,
+#promptCard4 {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  background-color: white;
+}
+#promptCard1 h2,
+#promptCard2 h2,
+#promptCard3 h2,
+#promptCard4 h2 {
+  padding: 20px;
+}
+#promptCard1 p,
+#promptCard2 p,
+#promptCard3 p,
+#promptCard4 p {
+  font-size: 20px;
+}
 #play {
-    width: 30%;
-    background-color: #4c78af;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  width: 30%;
+  background-color: #4c78af;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
 }
 
-#submit1,#submit2,#submit3,#submit4 {
-    width: 30%;
-    background-color: #4caf72;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+#submit1,
+#submit2,
+#submit3,
+#submit4 {
+  width: 30%;
+  background-color: #4caf72;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 /*----- BODY END -----*/
 
 /*----- FOOTER START -----*/
 .footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 2rem;
-    background: hsl(300, 100%, 25%, 0.1);
-    color: #000;
-    font-weight: 500;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.2rem;
-    letter-spacing: 5px;
-  }
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: hsl(300, 100%, 25%, 0.1);
+  color: #000;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  letter-spacing: 5px;
+}
 /*----- FOOTER START -----*/
+
+@media only screen and (max-width: 1320px) {
+
+  }
+  @media only screen and (max-width: 1100px) {
+
+  }
+  @media only screen and (max-width: 760px) {
+
+  }

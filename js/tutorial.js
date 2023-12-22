@@ -1,3 +1,4 @@
+//-----------------------Triangle js Start------------------------//
 class Triangulo {
   constructor() {
     // Inicializar propiedades del triángulo
@@ -16,37 +17,57 @@ class Triangulo {
     this.lados = lados;
   }
 
-  setHeight(height){
+  setHeight(height) {
     this.height = height;
   }
 
-  setBase(base){
+  setBase(base) {
     this.base = base;
   }
 
-  validateTriangle() {
+
+// Async Validation
+validateTriangleByAnglesAsync() {
+  return new Promise((resolve, reject) => {
     // Verificar que ninguno de los ángulos sea menor que 0 o mayor o igual a 180°
     for (let i = 0; i < this.angulos.length; i++) {
       if (this.angulos[i] < 0 || this.angulos[i] >= 180) {
-        document.getElementById(
-          "resultado1"
-        ).innerText = `Error: Los ángulos deben estar en el rango [0, 180).`;
-        return false; // El triángulo no es válido
+        document.getElementById("resultado1").innerText = `Error: Los ángulos deben estar en el rango [0, 180).`;
+        reject("El triángulo no es válido");
+        return; // El triángulo no es válido
       }
     }
 
     // Verificar que la suma de los ángulos sea igual a 180
     const sumaAngulos = this.angulos.reduce((acc, val) => acc + val, 0);
     if (sumaAngulos !== 180) {
-      document.getElementById(
-        "resultado1"
-      ).innerText = `Error: La suma de los ángulos debe ser igual a 180 grados.`;
-      return false; // El triángulo no es válido
+      document.getElementById("resultado1").innerText = `Error: La suma de los ángulos debe ser igual a 180 grados.`;
+      reject("El triángulo no es válido");
+      return; // El triángulo no es válido
     }
 
     // Si pasa ambas verificaciones, el triángulo es válido
     console.log("¡Triángulo válido!");
-    return true;
+    resolve(true);
+  });
+}
+
+
+  validateTriangleBySidesAsync() {
+    return new Promise((resolve, reject) => {
+      const [a, b, c] = this.lados;
+  
+      // Check the conditions
+      if (!(a + b > c) || !(a + c > b) || !(b + c > a)) {
+        document.getElementById("resultado2").innerText = `Error: No se cumplen las condiciones de un triángulo.`;
+        reject("El triángulo no es válido");
+        return; // The triangle is not valid
+      }
+  
+      // If passes the condition, the triangle is valid
+      console.log("¡Triángulo válido por lados!");
+      resolve(true);
+    });
   }
 
   // Métodos para clasificar el triángulo por ángulos y lados con operador ternario
@@ -79,8 +100,8 @@ class Triangulo {
     return (this.base * this.height) / 2;
   }
 }
-
-//----------DOM Variables-----------------
+//-----------------------Triangle js End------------------------//
+//-----------------------Variables for Controller and View.------------------------//
 
 const triangulo = new Triangulo();
 let option;
@@ -97,6 +118,7 @@ const promptCard4 = document.getElementById("promptCard4");
 const inputContainer4 = document.getElementById("inputContainer4");
 const output4 = document.getElementById("output4");
 
+//-----------------------View js Start------------------------//
 function playButton() {
   document
     .getElementById("triangleForm")
@@ -138,34 +160,6 @@ function enviarButton4() {
       triangleMaster();
     });
 }
-//Permitir solo dígitos en el campo de imput
-function allowOnlyDigits(event) {
-  const keyCode = event.which || event.keyCode;
-  const inputCharacter = String.fromCharCode(keyCode);
-  const valEx = /\d/;
-
-  // Allow backspace, delete, left arrow, right arrow, and tab
-  if (
-    valEx.test(inputCharacter) ||
-    keyCode === 8 ||
-    keyCode === 46 ||
-    keyCode === 37 ||
-    keyCode === 39 ||
-    keyCode === 9
-  ) {
-    return true;
-  } else {
-    event.preventDefault();
-    return false;
-  }
-}
-
-// AllowOnlyDigits function to each input field
-const inputFields = document.querySelectorAll('input[type="number"]');
-inputFields.forEach((inputField) => {
-  inputField.addEventListener("keypress", allowOnlyDigits);
-});
-
 //Botón de Jugar.
 function submitForm() {
   option = document.getElementById("option").value;
@@ -229,7 +223,7 @@ function submitForm() {
       output3.style.display = "none";
       promptCard4.style.display = "block";
       output4.style.display = "block";
-        // Scroll to the element with the class "inputContainer"
+      // Scroll to the element with the class "inputContainer"
       if (inputContainer4) {
         inputContainer4.scrollIntoView({ behavior: "smooth" });
       }
@@ -263,8 +257,61 @@ function submitForm() {
       ).innerText = `Opción no válida. Por favor, elija una opción válida.`;
   }
 }
+//Permitir solo dígitos en el campo de imput
+function allowOnlyDigits(event) {
+  const keyCode = event.which || event.keyCode;
+  const inputCharacter = String.fromCharCode(keyCode);
+  const valEx = /\d/;
 
-function triangleMaster() {
+  // Allow backspace, delete, left arrow, right arrow, and tab
+  if (
+    valEx.test(inputCharacter) ||
+    keyCode === 8 ||
+    keyCode === 46 ||
+    keyCode === 37 ||
+    keyCode === 39 ||
+    keyCode === 9
+  ) {
+    return true;
+  } else {
+    event.preventDefault();
+    return false;
+  }
+}
+// AllowOnlyDigits function to each input field
+const inputFields = document.querySelectorAll('input[type="number"]');
+inputFields.forEach((inputField) => {
+  inputField.addEventListener("keypress", allowOnlyDigits);
+});
+
+//Reset option for all values in form
+document.addEventListener('DOMContentLoaded', function () {
+  // Get the form element
+  var triangleForm = document.getElementById('triangleForm');
+
+  // Reset the form to its default values
+  triangleForm.reset();
+
+  // Reset specific elements by name
+  resetElementByName('angle');
+  resetElementByName('length');
+  resetElementByName('lengthP');
+  resetElementByName('base');
+  resetElementByName('height');
+});
+
+function resetElementByName(elementName) {
+  // Get all elements with the specified name
+  var elements = document.getElementsByName(elementName);
+
+  // Set their values to the default ones
+  for (var i = 0; i < elements.length; i++) {
+      elements[i].value = '';
+  }
+}
+//-----------------------View js End------------------------//
+//-----------------------Controller js Start------------------------//
+async function triangleMaster() {
   const lados = [];
 
   switch (option) {
@@ -279,8 +326,9 @@ function triangleMaster() {
       angulos.push(angle1, angle2, angle3);
       // Pass the 'angulos' array to setAngulos
       triangulo.setAngulos(angulos);
-      //Mostrar Clasificación si cumple con los requerimientos.
-      if (triangulo.validateTriangle()) {
+      try {
+        //Mostrar Clasificación si cumple con los requerimientos.
+        await triangulo.validateTriangleByAnglesAsync();
         // Scroll to the element with the class "inputContainer" o "OUTPUT"
         if (output1) {
           output1.scrollIntoView({ behavior: "smooth" });
@@ -288,7 +336,7 @@ function triangleMaster() {
         document.getElementById(
           "resultado1"
         ).innerText = `Clasificación por ángulos: ${triangulo.classifyByAngulos()}`;
-      } else {
+      } catch (error) {
         document.getElementById(
           "resultado1"
         ).innerText = `Los ángulos no cumplen con las características necesarias para hacer un triángulo`;
@@ -304,14 +352,22 @@ function triangleMaster() {
       lados.push(length1, length2, length3);
       // Pass the 'angulos' array to setAngulos
       triangulo.setLados(lados);
-        // Scroll to the element with the class "OUTPUT"
-      if (output2) {
-        output2.scrollIntoView({ behavior: "smooth" });
-      }
-      //Mostrar Clasificación
-      document.getElementById(
-        "resultado2"
-      ).innerText = `Clasificación por lados: ${triangulo.classifyByLados()}`;
+            try {
+              //Mostrar Clasificación si cumple con los requerimientos.
+              await triangulo.validateTriangleBySidesAsync();
+              // Scroll to the element with the class "inputContainer" o "OUTPUT"
+              if (output2) {
+                output2.scrollIntoView({ behavior: "smooth" });
+              }
+              document.getElementById(
+                "resultado2"
+              ).innerText = `Clasificación por lados: ${triangulo.classifyByLados()}`;
+            } catch (error) {
+              //Mostrar Clasificación
+              document.getElementById(
+                "resultado2"
+              ).innerText = `Los lados no cumplen con las características necesarias para hacer un triángulo`;
+            }
       break;
 
     case "3":
@@ -321,14 +377,22 @@ function triangleMaster() {
       lados.push(lengthP1, lengthP2, lengthP3);
       // Pass the 'angulos' array to setAngulos
       triangulo.setLados(lados);
-      // Scroll to the element with the class "OUTPUT"
-      if (output3) {
-        output3.scrollIntoView({ behavior: "smooth" });
-      }
-      //Mostrar perimetro
-      document.getElementById(
-        "resultado3"
-      ).innerText = `Perímetro del triángulo: ${triangulo.calculatePerimeter()}`;
+      try {
+        //Mostrar Clasificación si cumple con los requerimientos.
+        await triangulo.validateTriangleBySidesAsync();
+        // Scroll to the element with the class "inputContainer" o "OUTPUT"
+        if (output3) {
+          output3.scrollIntoView({ behavior: "smooth" });
+        }
+        document.getElementById(
+          "resultado3"
+        ).innerText = `Perímetro del triángulo: ${triangulo.calculatePerimeter()}`;
+      } catch (error) {
+        //Mostrar Clasificación
+        document.getElementById(
+          "resultado3"
+        ).innerText = `Los lados no cumplen con las características necesarias para hacer un triángulo`;
+      }   
       break;
 
     case "4":
@@ -338,7 +402,7 @@ function triangleMaster() {
       triangulo.setBase(base);
       triangulo.setHeight(height);
       const areaResult = triangulo.calculateArea();
-        // Scroll to the element with the class "OUTPUT"
+      // Scroll to the element with the class "OUTPUT"
       if (output4) {
         output4.scrollIntoView({ behavior: "smooth" });
       }
@@ -402,3 +466,4 @@ function historial() {
   document.getElementById("resultado3").innerText = historyEntry.result3;
   document.getElementById("resultado4").innerText = historyEntry.result4;
 }
+//-----------------------Controller js End------------------------//
