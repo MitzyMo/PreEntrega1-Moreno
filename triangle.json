@@ -1,0 +1,48 @@
+{
+    "triangles": [
+      {
+        "type": "ByAngles",
+        "classification": "Rectángulo",
+        "history": [
+          {
+            "result": "Rectángulo",
+            "timestamp": "2023-01-01T12:00:00Z"
+          }
+
+        ]
+      },
+      {
+        "type": "BySides",
+        "classification": "Equilátero",
+        "history": [
+          {
+            "result": "Equilátero",
+            "timestamp": "2023-01-02T14:30:00Z"
+          }
+          
+        ]
+      },
+      {
+        "type": "ByPerimeter",
+        "perimeter": 15.5,
+        "history": [
+          {
+            "result": 15.5,
+            "timestamp": "2023-01-03T10:45:00Z"
+          }
+        ]
+      },
+      {
+        "type": "ByArea",
+        "area": 25.0,
+        "history": [
+          {
+            "result": 25.0,
+            "timestamp": "2023-01-04T16:20:00Z"
+          },
+          // Add more history entries as needed
+        ]
+      },
+      // Add more triangles as needed
+    ]
+  }
