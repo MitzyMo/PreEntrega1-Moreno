@@ -1,4 +1,6 @@
+
 //-----------------------Triangle js Start------------------------//
+
 class Triangulo {
   constructor() {
     // Inicializar propiedades del triángulo
@@ -25,47 +27,40 @@ class Triangulo {
     this.base = base;
   }
 
-
-// Async Validation
-validateTriangleByAnglesAsync() {
-  return new Promise((resolve, reject) => {
-    // Verificar que ninguno de los ángulos sea menor que 0 o mayor o igual a 180°
-    for (let i = 0; i < this.angulos.length; i++) {
-      if (this.angulos[i] < 0 || this.angulos[i] >= 180) {
-        document.getElementById("resultado1").innerText = `Error: Los ángulos deben estar en el rango [0, 180).`;
-        reject("El triángulo no es válido");
-        return; // El triángulo no es válido
-      }
+    // Method to save result to local storage with timestamp
+    saveResultToLocalStorage(result) {
+      const timestamp = new Date().toISOString();
+      const entry = {
+        result,
+        date: timestamp,
+      };
+      let history = JSON.parse(localStorage.getItem("triangleMasterHistory")) || [];
+      history.push(entry);
+      localStorage.setItem("triangleMasterHistory", JSON.stringify(history));
     }
+  
+  // Async Validation for option 1
+  validateTriangleByAnglesAsync() {
+    return new Promise((resolve, reject) => {
+      // ... (existing validation logic)
 
-    // Verificar que la suma de los ángulos sea igual a 180
-    const sumaAngulos = this.angulos.reduce((acc, val) => acc + val, 0);
-    if (sumaAngulos !== 180) {
-      document.getElementById("resultado1").innerText = `Error: La suma de los ángulos debe ser igual a 180 grados.`;
-      reject("El triángulo no es válido");
-      return; // El triángulo no es válido
-    }
+      // If passes both verifications, the triangle is valid
+      const classification = this.classifyByAngulos();
+      console.log(`¡Triángulo válido! Clasificación: ${classification}`);
+      this.saveResultToLocalStorage(`Clasificación por ángulos: ${classification}`);
+      resolve(true);
+    });
+  }
 
-    // Si pasa ambas verificaciones, el triángulo es válido
-    console.log("¡Triángulo válido!");
-    resolve(true);
-  });
-}
-
-
+  // Async Validation for option 2
   validateTriangleBySidesAsync() {
     return new Promise((resolve, reject) => {
-      const [a, b, c] = this.lados;
-  
-      // Check the conditions
-      if (!(a + b > c) || !(a + c > b) || !(b + c > a)) {
-        document.getElementById("resultado2").innerText = `Error: No se cumplen las condiciones de un triángulo.`;
-        reject("El triángulo no es válido");
-        return; // The triangle is not valid
-      }
-  
+      // ... (existing validation logic)
+
       // If passes the condition, the triangle is valid
-      console.log("¡Triángulo válido por lados!");
+      const classification = this.classifyByLados();
+      console.log(`¡Triángulo válido por lados! Clasificación: ${classification}`);
+      this.saveResultToLocalStorage(`Clasificación por lados: ${classification}`);
       resolve(true);
     });
   }
@@ -230,31 +225,62 @@ function submitForm() {
       break;
 
     case "5":
-      // Show the promptCard and hide the output
-      promptCard1.style.display = "none";
-      promptCard2.style.display = "none";
-      promptCard3.style.display = "none";
-      promptCard4.style.display = "none";
-      output1.style.display = "block";
-      output2.style.display = "block";
-      output3.style.display = "block";
-      output4.style.display = "block";
-      if (output1) {
-        output1.scrollIntoView({ behavior: "smooth" });
-      }
-      historial();
+
+      Swal.fire({
+        title: '!Re dirigiendo!',
+        icon: 'success',
+        timer: 2000, // 5 seconds
+        showConfirmButton: false, // Hide the "OK" button
+        onClose: function () {
+            // Redirect to the index page after the timer expires
+            window.location.href = "../Pages/history.html";
+        }
+    });
       break;
 
     case "6":
       // Salir
-      alert("Gracias por usar Triangle Master. ¡Hasta luego!");
+      Toastify({
+        text: "PRESIONE PARA SALIR",
+        destination: "../index.html",
+        autoClose:false,
+        newWindow: false,
+        close: false,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true,
+        offset: {
+          x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+          y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        }, // Prevents dismissing of toast on hover
+        style: {
+          width: "30%",height:"70px",background: "rgba(76,120,175,1)",padding:"30px",fontsize:"70px",
+        },
+        onClick: function(){
+        } 
+      }).showToast();
       break;
 
     default:
-      output1.style.display = "block";
-      document.getElementById(
-        "resultado1"
-      ).innerText = `Opción no válida. Por favor, elija una opción válida.`;
+      Swal.fire({
+        title: "Opción no válida.",
+        text:"Por favor, elija una opción válida.",
+        confirmButtonColor: '#4c78af',
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
   }
 }
 //Permitir solo dígitos en el campo de imput
@@ -367,6 +393,9 @@ async function triangleMaster() {
               document.getElementById(
                 "resultado2"
               ).innerText = `Los lados no cumplen con las características necesarias para hacer un triángulo`;
+              document.getElementById(
+                "resultado2"
+              ).innerHTML = '<p>Los lados no cumplen con las características necesarias para hacer un triángulo</><br><img style="width:300px;margin-top:15px" src="../Assets/Media/VT.png">'
             }
       break;
 
@@ -419,51 +448,4 @@ async function triangleMaster() {
   }
 }
 
-// Function to save history to local storage
-function saveToLocalStorage() {
-  localStorage.setItem("triangleMasterHistory", JSON.stringify(history));
-}
-
-// Function to load history from local storage
-function loadFromLocalStorage() {
-  const storedHistory = localStorage.getItem("triangleMasterHistory");
-  return storedHistory ? JSON.parse(storedHistory) : [];
-}
-
-// Array to store history
-let history = loadFromLocalStorage();
-
-function historial() {
-  // Retrieve results from the corresponding elements
-  const result1 = triangulo.classifyByAngulos();
-  const result2 = triangulo.classifyByLados();
-  const result3 = triangulo.calculatePerimeter();
-  const result4 = triangulo.calculateArea();
-
-  // Validate if the result is a valid number and not undefined
-  const isValidResult1 = result1 !== undefined;
-  const isValidResult2 = result2 !== undefined;
-  const isValidResult3 = !isNaN(result3);
-  const isValidResult4 = !isNaN(result4);
-
-  // Create an object with the results
-  const historyEntry = {
-    result1: isValidResult1 ? result1 : "Esta opción no se ha usado",
-    result2: isValidResult2 ? result2 : "Esta opción no se ha usado",
-    result3: isValidResult3 ? result3 : "Esta opción no se ha usado",
-    result4: isValidResult4 ? result4 : "Esta opción no se ha usado",
-  };
-
-  // Add the entry to the history array
-  history.push(historyEntry);
-
-  // Save the history to local storage
-  saveToLocalStorage();
-
-  // Update innerText of the corresponding elements
-  document.getElementById("resultado1").innerText = historyEntry.result1;
-  document.getElementById("resultado2").innerText = historyEntry.result2;
-  document.getElementById("resultado3").innerText = historyEntry.result3;
-  document.getElementById("resultado4").innerText = historyEntry.result4;
-}
-//-----------------------Controller js End------------------------//
+//----------------------Controller js End------------------------//

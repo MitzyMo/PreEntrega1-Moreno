@@ -8,35 +8,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="../Assets/css/main.css">
     <title>Tutorial</title>
+    <!--ICON-->
     <link alt="logo" rel="shortcut icon" href="../Assets/Media/triangle.png" type="image/x-icon" />
+    <!--Tostify CDN for resudectuib-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!--Sweet Alert for basic info-->
+    <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css " rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 
 <body>
     <header>
         <div class="logo"><img src="../Assets/Media/triangle.png" style="height: 30px;" alt="TriangleQuest"> Quest</div>
         <div class="hamburger">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
         </div>
         <nav class="nav-bar">
-          <ul>
-            <li><a href="../index.html" class="active">Home</a></li>
-            <li><a href="./tutorial.html">Tutorial</a></li>
-            <li><a href="./games.html">Games</a></li>
-            <li><a href="./contact.html">Contact</a></li>
-          </ul>
+            <ul>
+                <li><a href="../index.html" class="active">Home</a></li>
+                <li><a href="./tutorial.html">Tutorial</a></li>
+                <li><a href="./history.html">History</a></li>
+                <li><a href="./drawing.html">2D Draw</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
         </nav>
-      </header>
+    </header>
     <main class="main-tutorial">
-        <h1 class="main-tutorial-title">Tutorial</h1>
-
         <div class="card">
-            <h2>Seleccione una opción:</h2>
+            <h2>Categorías:</h2>
             <form id="triangleForm">
                 <label for="option"></label>
                 <select id="option" name="option">
-                    <option disabled selected value=""> -- select an option -- </option>
+                    <option disabled selected value=""> -- Select an option -- </option>
                     <option value="1">Clasificación por ángulos</option>
                     <option value="2">Clasificación por lados</option>
                     <option value="3">Calcular perímetro</option>
@@ -45,102 +50,120 @@
                     <option value="6">Salir</option>
                 </select>
                 <br>
-                <button type="button" id="play" onclick="submitForm()">Ingresar</button>
+                <button type="button" id="play" onclick="submitForm()">Select</button>
             </form>
         </div>
         <!-- Para Opción 1 Tipo de Ángulo Start -->
-        <div id="promptCard1" style="display: none;">
-            <h2>Ingreso de datos:</h2>
-            <p>Recuerde que para clasificar un triángulo por medio de sus ángulos, estos deben sumar 180 de lo comtrario
-                no
-                será posible catalogarlo.</p>
-            <br>
-            <div id="inputContainer1" class="inputContainer">
-                <label for="angle1">Ingrese el primer ángulo.</label>
-                <input type="number" name="angle" id="angle1" placeholder="Ángulo entre [0 y 180)" required>
-                <label for="angle2">Ingrese el segundo ángulo.</label>
-                <input type="number" name="angle" id="angle2" placeholder="Ángulo entre [0 y 180)" required>
-                <label for="angle3">Ingrese el tercer ángulo.</label>
-                <input type="number" name="angle" id="angle3" placeholder="Ángulo entre [0 y 180)" required>
+        <div class="card-container row">
+            <div class="column" id="promptCard1" style="display: none;">
+                <h2>Ingreso de datos:</h2>
+                <p>Recuerde que para clasificar un triángulo por medio de sus ángulos, estos deben sumar 180 de lo
+                    comtrario
+                    no
+                    será posible catalogarlo.</p>
+                <br>
+                <div id="inputContainer1" class="inputContainer">
+                    <label for="angle1">Ingrese el primer ángulo.</label>
+                    <input type="number" name="angle" id="angle1" placeholder="Ángulo entre [0 y 180)" required>
+                    <label for="angle2">Ingrese el segundo ángulo.</label>
+                    <input type="number" name="angle" id="angle2" placeholder="Ángulo entre [0 y 180)" required>
+                    <label for="angle3">Ingrese el tercer ángulo.</label>
+                    <input type="number" name="angle" id="angle3" placeholder="Ángulo entre [0 y 180)" required>
+                </div>
+                <button type="button" id="submit3" onclick="triangleMaster()">Enviar</button>
             </div>
-            <button type="button" id="submit3" onclick="triangleMaster()">Enviar</button>
-        </div>
-        <div id="output1" style="display: none;">
-            <h2>Clasificación por ángulos:</h2>
-            <p class="output" id="resultado1"></p>
+            <div class="column" id="output1" style="display: none;">
+                <h2>Clasificación por ángulos:</h2>
+                <p class="output" id="resultado1"></p>
+            </div>
         </div>
         <!-- Para Opción 1 End -->
-        <!-- Para Opción 2 Tipo de Triángulo Start -->
-        <div id="promptCard2" style="display: none;">
-            <h2>Ingreso de datos:</h2>
-            <br>
-            <p>Triángulo equilátero: Las medidas de sus tres lados son iguales. Triángulo isósceles: Las medidas de dos
-                lados
-                son iguales, es decir, dos lados son congruentes. Triángulo escaleno: Todas las medidas de sus lados son
-                diferentes, es decir, no tiene lados congruentes.</p>
-            <br>
-            <div id="inputContainer2" class="inputContainer">
-                <label for="length1">Ingrese la longitud del primer lado.</label>
-                <input type="number" name="length" id="length1" placeholder="Números enteros positivos" required>
-                <label for="length2">Ingrese la longitud del segundo lado.</label>
-                <input type="number" name="length" id="length2" placeholder="Números enteros positivos" required>
-                <label for="length3">Ingrese la longitud del tercer lado.</label>
-                <input type="number" name="length" id="length3" placeholder="Números enteros positivos" required>
-            </div>
+        <div class="card-container row">
+            <!-- Para Opción 2 Tipo de Triángulo Start -->
+            <div class="column" id="promptCard2" style="display: none;">
+                <h2>Ingreso de datos:</h2>
+                <br>
+                <p>Triángulo equilátero: Las medidas de sus tres lados son iguales. Triángulo isósceles: Las medidas de
+                    dos
+                    lados
+                    son iguales, es decir, dos lados son congruentes. Triángulo escaleno: Todas las medidas de sus lados
+                    son
+                    diferentes, es decir, no tiene lados congruentes.</p>
+                <br>
+                <div id="inputContainer2" class="inputContainer">
+                    <label for="length1">Ingrese la longitud del primer lado.</label>
+                    <input type="number" name="length" id="length1" placeholder="Números enteros positivos" required>
+                    <label for="length2">Ingrese la longitud del segundo lado.</label>
+                    <input type="number" name="length" id="length2" placeholder="Números enteros positivos" required>
+                    <label for="length3">Ingrese la longitud del tercer lado.</label>
+                    <input type="number" name="length" id="length3" placeholder="Números enteros positivos" required>
+                </div>
 
 
-            <button type="button" id="submit4" onclick="triangleMaster()">Enviar</button>
-        </div>
-        <div id="output2" style="display: none;">
-            <h2>Clasificación por Longitud:</h2>
-            <p class="output" id="resultado2"></p>
-        </div>
-        <!-- Para Opción 2 End -->
-        <!-- Para Opción 3 Calcular perímetro Start -->
-        <div id="promptCard3" style="display: none;">
-            <h2>Ingreso de datos:</h2>
-            <p>Para conocer el perimetro se deben sumar sus tres lados.</p>
-            <div id="inputContainer3" class="inputContainer">
-                <label for="lengthP1">Ingrese la longitud del primer lado.</label>
-                <input type="number" name="lengthP" id="lengthP1" placeholder="Números enteros positivos" required>
-                <label for="lengthP2">Ingrese la longitud del segundo lado.</label>
-                <input type="number" name="lengthP" id="lengthP2" placeholder="Números enteros positivos" required>
-                <label for="lengthP3">Ingrese la longitud del tercer lado.</label>
-                <input type="number" name="lengthP" id="lengthP3" placeholder="Números enteros positivos" required>
+                <button type="button" id="submit4" onclick="triangleMaster()">Enviar</button>
             </div>
-            <button type="button" id="submit1" onclick="triangleMaster()">Enviar</button>
-        </div>
-        <div id="output3" style="display: none;">
-            <h2>Perimetro del triángulo:</h2>
-            <p class="output" id="resultado3"></p>
-        </div>
-        <!-- Para Opción 3 End -->
-        <!-- Para Opción 4 Calcular Área Start -->
-        <div id="promptCard4" style="display: none;">
-            <h2>Ingreso de datos:</h2>
-            <p>Para conocer el área de un triángulo, se debe multiplicar la altura por su base y eso dividirlo en dos.
-            </p>
-            <div id="inputContainer4" class="inputContainer">
-                <label for="base">Ingrese la longitud de la base.</label>
-                <input type="number" name="base" id="base" placeholder="Números enteros positivos" required>
-                <label for="height">Ingrese la altura del triángulo.</label>
-                <input type="number"  id="height" placeholder="Números enteros positivos" required>
+            <div class="column" id="output2" style="display: none;">
+                <h2>Clasificación por Longitud:</h2>
+                <p class="output" id="resultado2"></p>
             </div>
-            <button type="button" id="submit2" onclick="triangleMaster()">Enviar</button>
+            <!-- Para Opción 2 End -->
         </div>
-        <div id="output4" style="display: none;">
-            <h2>Área del triángulo:</h2>
-            <p class="output" id="resultado4"></p>
+        <div class="card-container row">
+            <!-- Para Opción 3 Calcular perímetro Start -->
+            <div class="column" id="promptCard3" style="display: none;">
+                <h2>Ingreso de datos:</h2>
+                <p>Para conocer el perimetro se deben sumar sus tres lados.</p>
+                <div id="inputContainer3" class="inputContainer">
+                    <label for="lengthP1">Ingrese la longitud del primer lado.</label>
+                    <input type="number" name="lengthP" id="lengthP1" placeholder="Números enteros positivos" required>
+                    <label for="lengthP2">Ingrese la longitud del segundo lado.</label>
+                    <input type="number" name="lengthP" id="lengthP2" placeholder="Números enteros positivos" required>
+                    <label for="lengthP3">Ingrese la longitud del tercer lado.</label>
+                    <input type="number" name="lengthP" id="lengthP3" placeholder="Números enteros positivos" required>
+                </div>
+                <button type="button" id="submit1" onclick="triangleMaster()">Enviar</button>
+            </div>
+            <div class="column" id="output3" style="display: none;">
+                <h2>Perimetro del triángulo:</h2>
+                <p class="output" id="resultado3"></p>
+            </div>
+            <!-- Para Opción 3 End -->
+        </div>
+        <div class="card-container row">
+            <!-- Para Opción 4 Calcular Área Start -->
+            <div class="column" id="promptCard4" style="display: none;">
+                <h2>Ingreso de datos:</h2>
+                <p>Para conocer el área de un triángulo, se debe multiplicar la altura por su base y eso dividirlo en
+                    dos.
+                </p>
+                <div id="inputContainer4" class="inputContainer">
+                    <label for="base">Ingrese la longitud de la base.</label>
+                    <input type="number" name="base" id="base" placeholder="Números enteros positivos" required>
+                    <label for="height">Ingrese la altura del triángulo.</label>
+                    <input type="number" id="height" placeholder="Números enteros positivos" required>
+                </div>
+                <button type="button" id="submit2" onclick="triangleMaster()">Enviar</button>
+            </div>
+            <div class="column" id="output4" style="display: none;">
+                <h2>Área del triángulo:</h2>
+                <p class="output" id="resultado4"></p>
+            </div>
+
+            <!-- Para Opción 4 End -->
         </div>
 
-        <!-- Para Opción 4 End -->
+
+
+
     </main>
     <footer class="footer">
         &copy;<span id="year"> </span><span> Your Company Name. All rights reserved.</span>
-      </footer>
+    </footer>
     <script src="../js/header.js" defer></script>
     <script src="../js/tutorial.js" defer></script>
     <script src="../js/footer.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 
 </html>

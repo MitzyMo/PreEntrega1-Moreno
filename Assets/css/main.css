@@ -4,8 +4,13 @@
   padding: 0;
   list-style: none;
   text-decoration: none;
-  font-family: "futura md bt";
+  font-family: "Courier New", Courier, monospace;
   box-sizing: border-box;
+}
+.swal2-popup {
+  font-size: 15px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: lighter;
 }
 /*----- HEADER START -----*/
 header {
@@ -110,16 +115,20 @@ body {
   text-align: center;
   margin: 0 auto;
   background-image: url("../Media/endless-constellation.svg");
+  padding-bottom: 100px; 
 }
 .main-index,
-.main-tutorial {
+.main-tutorial,
+.main-history {
   margin-top: 70px;
+  height: 100vh;
 }
+
+
 .main-index-title,
 .main-tutorial-title {
   margin-top: 50px;
   margin-bottom: 30px;
-  font-family: "Courier New", Courier, monospace;
   font-size: 50px;
 }
 .main-index-card {
@@ -154,12 +163,34 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: white;
 }
-.card h2 {
-  margin: 20px;
+.card-container{
+  display: flex;
+  justify-content: center;
 }
 
-.card option {
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.card h2 {
+  margin: 20px;
+  color: #1e1f20;
+  margin-bottom: 50px;
+}
+.card select {
   font-size: 20px;
+}
+.card option {
+  font-size: 15px;
 }
 
 select {
@@ -183,7 +214,9 @@ input {
 #output2,
 #output3,
 #output4 {
-  max-width: 400px;
+  width: 400px;
+  
+  min-height: 400px;
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -229,7 +262,14 @@ input {
 #promptCard4 p {
   font-size: 20px;
 }
+#promptCard1 label,
+#promptCard2 label,
+#promptCard3 label,
+#promptCard4 label {
+  margin: 10px;
+}
 #play {
+  margin-top: 20px;
   width: 30%;
   background-color: #4c78af;
   color: white;
@@ -256,7 +296,7 @@ input {
 
 /*----- FOOTER START -----*/
 .footer {
-  position: absolute;
+  position: fixed; /* Change to fixed to keep it at the bottom of the viewport */
   bottom: 0;
   left: 0;
   right: 0;
@@ -281,3 +321,123 @@ input {
   @media only screen and (max-width: 760px) {
 
   }
+
+  .wrapper { 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 60%; 
+    background:hsl(300, 100%, 25%, 0.1); 
+    padding: 25px; 
+    border-radius: 5px; 
+    box-shadow: 4px 4px 2px
+        rgb(164, 188, 254); 
+        text-align: left;
+        font-weight: bold;
+} 
+ 
+.wrapper h2 { 
+    text-align: center; 
+    margin-bottom: 30px; 
+    text-transform: uppercase; 
+    letter-spacing: 3px; 
+    color: #332902; 
+} 
+  
+.wrapper .input_field { 
+    margin-bottom: 10px; 
+} 
+  
+.wrapper 
+    .input_field 
+    input[type="text"], 
+.wrapper textarea { 
+    border: 1px solid #e0e0e0; 
+    width: 100%; 
+    padding: 10px; 
+} 
+  
+.wrapper textarea { 
+    resize: none; 
+    height: 80px; 
+} 
+  
+.wrapper .btn input[type="submit"] { 
+    border: 0px; 
+    margin-top: 15px; 
+    padding: 10px; 
+    text-align: center; 
+    width: 100%; 
+    background: #4c78af; 
+    color: #fcfbf7; 
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-weight: bold; 
+    border-radius: 25px; 
+    cursor: pointer; 
+} 
+
+  
+#error_message { 
+    margin-bottom: 20px; 
+    background: #fe8b8e; 
+    padding: 0px; 
+    text-align: center; 
+    font-size: 14px; 
+    transition: all 0.5s ease; 
+}
+
+
+.card-container-history {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(3, auto); /* 3 rows with auto height */
+  gap: 20px; /* Space between items */
+  align-items: center;
+  justify-items: center;
+}
+.search {
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.sort {
+  padding: 8px;
+  width: 80%;
+  background-color: #4c78af;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+/* Column styles */
+.column-history {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* Media query for responsive design */
+@media only screen and (max-width: 600px) {
+  .card-container-history {
+    grid-template-columns: 1fr; /* Single column for small screens */
+  }
+  .wrapper { 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    max-width: 350px; 
+    width: 100%; 
+    background:hsl(300, 100%, 25%, 0.1); 
+    padding: 25px; 
+    border-radius: 5px; 
+    box-shadow: 4px 4px 2px
+        rgb(164, 188, 254); 
+        text-align: left;
+        font-weight: bold;
+} 
+}

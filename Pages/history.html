@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Explore the facinating world of triangles" />
+    <meta name="keywords" content="triangles game study math" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="../Assets/css/main.css">
+    <title>Historial</title>
+    <!--ICON-->
+    <link alt="logo" rel="shortcut icon" href="../Assets/Media/triangle.png" type="image/x-icon" />
+    <!--Tostify CDN for resudectuib-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!--Sweet Alert for basic info-->
+    <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css " rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body>
+    <header>
+        <div class="logo"><img src="../Assets/Media/triangle.png" style="height: 30px;" alt="TriangleQuest"> Quest</div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="../index.html" class="active">Home</a></li>
+                <li><a href="./tutorial.html">Tutorial</a></li>
+                <li><a href="./history.html">History</a></li>
+                <li><a href="./drawing.html">2D Draw</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-history">
+        <div class="card-container-history row">
+            <input class="search" id="searchDate" type="date" placeholder="Search" />
+            <button class="sort" id="filterButton" data-sort="name">Filtrar</button>
+            <!-- Para Opción 1 Tipo de Ángulo Start -->
+            <div class="column-history" id="output1" >
+                <h2>Clasificación por ángulos:</h2>
+                <p class="output" id="resultado1"></p>
+            </div>
+            <!-- Para Opción 1 End -->
+            <!-- Para Opción 2 Tipo por lado Start -->
+            <div class="column-history" id="output2" >
+                <h2>Clasificación por Longitud:</h2>
+                <p class="output" id="resultado2"></p>
+            </div>
+            <!-- Para Opción 2 End -->
+            <!-- Para Opción 3 Calcular perímetro Start -->
+            <div class="column-history" id="output3" >
+                <h2>Perimetro del triángulo:</h2>
+                <p class="output" id="resultado3"></p>
+            </div>
+            <!-- Para Opción 3 End -->
+            <!-- Para Opción 4 Calcular Área Start -->
+            <div class="column-history" id="output4" >
+                <h2>Área del triángulo:</h2>
+                <p class="output" id="resultado4"></p>
+            </div>
+            <!-- Para Opción 4 End -->
+        </div>
+    </main>
+    <footer class="footer">
+        &copy;<span id="year"> </span><span> Your Company Name. All rights reserved.</span>
+    </footer>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/history.js" defer></script>
+    <script src="../js/footer.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+
+</body>
+
+</html>
