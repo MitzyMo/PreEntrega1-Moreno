@@ -518,10 +518,32 @@ input[type="range"] {
 }
 
 canvas {
-  width: 80%;
-  height: 500px;
+  width: 800px;
+  height: 600px;
   margin-bottom: 40px;
 }
+@media only screen and (max-width: 801px) {
+canvas {
+  width: 600px;
+  height: 400px;
+  margin-bottom: 40px;
+}
+}
+@media only screen and (max-width: 601px) {
+canvas {
+  width: 500px;
+  height: 300px;
+  margin-bottom: 40px;
+}
+}
+@media only screen and (max-width: 501px) {
+canvas {
+  width: 400px;
+  height: 200px;
+  margin-bottom: 40px;
+}
+}
+
 #quote {
   width: 80%;
   margin: 0 auto;
