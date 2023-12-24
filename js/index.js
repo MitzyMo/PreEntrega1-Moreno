@@ -29,4 +29,17 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
-  
+
+  // Fetch a random quote and set it as the text content of the <i> tag
+fetch("https://type.fit/api/quotes")
+.then(function (response) {
+  return response.json();
+})
+.then(function (data) {
+  // Get a random quote from the data
+  const randomIndex = Math.floor(Math.random() * data.length);
+  const randomQuote = data[randomIndex].text;
+
+  // Set the quote as the text content of the <i> tag
+  document.getElementById("quote").textContent = "- "+randomQuote+"";
+});
