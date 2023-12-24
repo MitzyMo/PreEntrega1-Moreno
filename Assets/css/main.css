@@ -23,9 +23,13 @@ header {
   justify-content: space-between;
   padding: 0 100px;
 }
-.logo {
+
+.logo a{
   font-size: 30px;
   text-transform: uppercase;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
 }
 .hamburger {
   display: none;
@@ -65,7 +69,7 @@ header {
     padding: 10px 30px;
   }
 }
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 930px) {
   .hamburger {
     display: block;
     cursor: pointer;
@@ -139,7 +143,62 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: white;
-  font-size: 30px;
+  font-size: 20px;
+}
+
+.main-index-card-menu {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px; /* Adjust as needed */
+}
+
+.main-index-card-menu-option {
+  width: 30%; /* Set to 48% to leave some space between columns */
+  box-sizing: border-box;
+  padding: 20px;
+  border: 1px solid #ccc; /* Optional: Add border for visual separation */
+  border-radius: 8px;
+  transition: transform 0.3s ease; /* Optional: Add a subtle transition effect */
+  background-color: white;
+}
+
+@media only screen and (max-width: 930px) {
+  .main-index-card-menu {
+display: flex;
+flex-flow: column;
+gap: 20px;
+  }
+  .main-index-card-menu-option {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+.main-index-card-menu-option:hover {
+  transform: scale(1.05); /* Optional: Scale up slightly on hover */
+}
+
+.main-index-card-menu-option a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.main-index-card-menu-option h5 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #4c78af;
+}
+
+.main-index-card-menu-option p {
+  margin-bottom: 20px;
+}
+
+.main-index-card-menu-option .logo {
+  width: 18px; /* Adjust the width of the SVG */
+  margin-left: 5px; /* Adjust the space between text and SVG */
+  color: #4c78af;
 }
 
 #card1,
@@ -440,4 +499,29 @@ input {
         text-align: left;
         font-weight: bold;
 } 
+}
+
+.sliders {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.column-draw {
+  width: 30%;
+}
+/* Additional styling for labels and input elements (optional) */
+.label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+.drawing-title{
+  margin-top: 40px;
+  margin-bottom: 40px;
 }

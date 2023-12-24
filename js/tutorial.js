@@ -317,7 +317,6 @@ document.addEventListener('DOMContentLoaded', function () {
   resetElementByName('base');
   resetElementByName('height');
 });
-
 function resetElementByName(elementName) {
   // Get all elements with the specified name
   var elements = document.getElementsByName(elementName);

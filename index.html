@@ -9,11 +9,15 @@
   <link rel="stylesheet" type="text/css" href="./Assets/css/main.css">
   <title>Triangle Master</title>
   <link alt="logo" rel="shortcut icon" href="./Assets/Media/triangle.png" type="image/x-icon" />
+  <!--Sweet Alert for basic info-->
+  <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css " rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
   <header>
-    <div class="logo"><img src="./Assets/Media/triangle.png" style="height: 30px;" alt="TriangleQuest"> Quest</div>
+    <div class="logo"><a href="./index.html"><img src="./Assets/Media/triangle.png" style="height: 30px;"
+          alt="TriangleQuest"> Quest</a></div>
     <div class="hamburger">
       <div class="line"></div>
       <div class="line"></div>
@@ -22,13 +26,14 @@
     <nav class="nav-bar">
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="./Pages/tutorial.html">Tutorial</a></li>
+        <li><a href="./Pages/tutorial.html">Study</a></li>
+        <li><a href="./Pages/drawing.html">2D Live</a></li>
         <li><a href="./Pages/history.html">History</a></li>
-        <li><a href="./Pages/drawing.html">2D Draw</a></li>
         <li><a href="./Pages/contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
+
   <main class="main-index">
     <h1 class="main-index-title">¡Bienvenido a Triangle Master!</h1>
     <div class="main-index-card">
@@ -42,32 +47,38 @@
       </p>
     </div>
     <br>
-<div class="main-index-card-menu">
-
-<div class="">
-    <a href="#">
-        <h5 class="">Noteworthy technology acquisitions 2021</h5>
-    </a>
-    <p class="">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-    <a href="#" class="">
-        Read more
-        <svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-        </svg>
-    </a>
-</div>
-
-
-
-
-</div>
+    <div class="main-index-card-menu">
+      <div id="redirigir1" class="main-index-card-menu-option">
+        <h5 class="redirigir1">Study</h5>
+        <p class="redirigir1">Ingrese aquí para estudiar la clasificación y algunas operaciones básicas de los
+          triángulos.</p>
+        <a href="./Pages/tutorial.html">Ingresar
+          <svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9" />
+          </svg></a>
+      </div>
+      <div id="redirigir2" class="main-index-card-menu-option">
+        <h5 class="redirigir2">2D live</h5>
+        <p class="redirigir2">Interactua con los vertices de un triángulo y créa distintos tipos.</p>
+        <a href="./Pages/drawing.html" class="redirigir2">
+          Ingresar
+          <svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9" />
+          </svg>
+        </a>
+      </div>
+    </div>
   </main>
+
   <footer class="footer">
-    &copy;<span id="year"> </span> <span> Triangle Master. All rights reserved.</span>
+    &copy;<span id="year"> </span> <span> Mo Triangle. All rights reserved.</span>
   </footer>
   <script src="./js/header.js" defer></script>
   <script src="./js/footer.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 
 </html>
