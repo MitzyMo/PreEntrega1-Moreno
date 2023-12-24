@@ -10,15 +10,10 @@
     <title>2D Rendering</title>
     <!--ICON-->
     <link alt="logo" rel="shortcut icon" href="../Assets/Media/triangle.png" type="image/x-icon" />
-    <!--Tostify CDN for resudectuib-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <!--Sweet Alert for basic info-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css" rel="stylesheet">
 
 </head>
 
-<body>
+<body onload="initialize();">
     <header>
         <div class="logo"><img src="../Assets/Media/triangle.png" style="height: 30px;" alt="TriangleQuest"> Quest</div>
         <div class="hamburger">
@@ -36,17 +31,19 @@
             </ul>
         </nav>
     </header>
-    <main>
-
+    <main class="main-drawing">
+        <canvas id="draw-surface" width="800" height="600">
+            Your Browser does not support HTML5
+        </canvas>  
+        <br>
+        <i>Demo is above this text</i>
     </main>
     <footer class="footer">
         &copy;<span id="year"> </span><span> Your Company Name. All rights reserved.</span>
     </footer>
     <script src="../js/header.js" defer></script>
-    <script src="../js/drawing.js" defer></script>
     <script src="../js/footer.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="../js/drawing.js" defer></script>
 </body>
 
 </html>

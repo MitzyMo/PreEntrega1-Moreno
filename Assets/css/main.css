@@ -119,7 +119,7 @@ body {
 }
 .main-index,
 .main-tutorial,
-.main-history {
+.main-history,.main-drawing {
   margin-top: 70px;
   height: 100vh;
 }

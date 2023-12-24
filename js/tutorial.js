@@ -1,6 +1,4 @@
-
 //-----------------------Triangle js Start------------------------//
-
 class Triangulo {
   constructor() {
     // Inicializar propiedades del triángulo
@@ -26,7 +24,6 @@ class Triangulo {
   setBase(base) {
     this.base = base;
   }
-
     // Method to save result to local storage with timestamp
     saveResultToLocalStorage(result) {
       const timestamp = new Date().toISOString();
@@ -37,13 +34,11 @@ class Triangulo {
       let history = JSON.parse(localStorage.getItem("triangleMasterHistory")) || [];
       history.push(entry);
       localStorage.setItem("triangleMasterHistory", JSON.stringify(history));
-    }
-  
+    } 
   // Async Validation for option 1
   validateTriangleByAnglesAsync() {
     return new Promise((resolve, reject) => {
       // ... (existing validation logic)
-
       // If passes both verifications, the triangle is valid
       const classification = this.classifyByAngulos();
       console.log(`¡Triángulo válido! Clasificación: ${classification}`);
@@ -51,12 +46,10 @@ class Triangulo {
       resolve(true);
     });
   }
-
   // Async Validation for option 2
   validateTriangleBySidesAsync() {
     return new Promise((resolve, reject) => {
       // ... (existing validation logic)
-
       // If passes the condition, the triangle is valid
       const classification = this.classifyByLados();
       console.log(`¡Triángulo válido por lados! Clasificación: ${classification}`);
@@ -97,7 +90,6 @@ class Triangulo {
 }
 //-----------------------Triangle js End------------------------//
 //-----------------------Variables for Controller and View.------------------------//
-
 const triangulo = new Triangulo();
 let option;
 const promptCard1 = document.getElementById("promptCard1");
@@ -447,5 +439,4 @@ async function triangleMaster() {
       ).innerText = `Aquí se desplegará el resultado de sus cálculos`;
   }
 }
-
 //----------------------Controller js End------------------------//
