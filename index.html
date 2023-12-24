@@ -1,124 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-    name="description"
-    content="Explore the facinating world of triangles"
-  />
-  <meta
-    name="keywords"
-    content="triangles game study math"
-  />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="./Assets/css/main.css" >
-    <title>Triangle Master</title>
-    <link
-    alt="logo"
-    rel="shortcut icon"
-    href="./Assets/Media/triangle.png"
-    type="image/x-icon"
-  />
-  </head>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="Explore the facinating world of triangles" />
+  <meta name="keywords" content="triangles game study math" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="./Assets/css/main.css">
+  <title>Triangle Master</title>
+  <link alt="logo" rel="shortcut icon" href="./Assets/Media/triangle.png" type="image/x-icon" />
+  <!--Sweet Alert for basic info-->
+  <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css " rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
 <body>
-    <h1>¡Bienvenido a Triangle Master!</h1>
-    <p>
-      TriangleMaster es un espacio interactivo que te permite explorar el fascinante mundo de los triángulos. Conviértete en un maestro de la geometría mientras clasificas triángulos por sus ángulos y lados. ¿Serás capaz de identificar un triángulo equilátero, rectángulo o isósceles? ¡Sumérgete en TriangleMaster y mejora tus habilidades matemáticas de manera divertida y educativa!
-    </p>
-    <div class="card">
-      <h2>Menu de opciones:</h2>
-      <form id="triangleForm">
-          <label for="option">Seleccione una opción:</label>
-          <select id="option" name="option">
-            <option disabled selected value=""> -- select an option -- </option>
-              <option value="1">Clasificación por ángulos</option>
-              <option value="2">Clasificación por lados</option>
-              <option value="3">Calcular perímetro</option>
-              <option value="4">Calcular área</option>
-              <option value="5">Historial</option>
-              <option value="6">Salir</option>
-          </select>
-          <br>
-          <button type="button" id="play" onclick="submitForm()">Ingresar</button>
-      </form>
-  </div>
-  <!-- Para Opción 1 Tipo de Ángulo Start -->
-  <div id="promptCard1" style="display: none;">
-    <h2>Ingreso de datos:</h2>
-    <p>Recuerde que para clasificar un triángulo por medio de sus ángulos, estos deben sumar 180 de lo comtrario no será posible catalogarlo.</p>
-    <br>
-    <div id="inputContainer1" class="inputContainer">
-      <label for="angle1">Ingrese el primer ángulo.</label>
-      <input type="number" name="angle" id="angle1" placeholder="Ángulo entre [0 y 180)" required>
-      <label for="angle2">Ingrese el segundo ángulo.</label>
-      <input type="number" name="angle" id="angle2" placeholder="Ángulo entre [0 y 180)" required>
-      <label for="angle3">Ingrese el tercer ángulo.</label>
-      <input type="number" name="angle" id="angle3" placeholder="Ángulo entre [0 y 180)" required>
+  <header>
+    <div class="logo"><a href="./index.html"><img src="./Assets/Media/triangle.png" style="height: 30px;"
+          alt="TriangleQuest"> Quest</a></div>
+    <div class="hamburger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
     </div>
-    <button type="button" id="submit3" onclick="triangleMaster()">Enviar</button>
-  </div>
-  <div id="output1"  style="display: none;">
-    <h2>Clasificación por ángulos:</h2>
-    <p class="output" id="resultado1"></p>
-  </div>
-  <!-- Para Opción 1 End -->
-  <!-- Para Opción 2 Tipo de Triángulo Start -->
-  <div id="promptCard2" style="display: none;">
-    <h2>Ingreso de datos:</h2>
-    <br>
-    <p>Triángulo equilátero: Las medidas de sus tres lados son iguales. Triángulo isósceles: Las medidas de dos lados son iguales, es decir, dos lados son congruentes. Triángulo escaleno: Todas las medidas de sus lados son diferentes, es decir, no tiene lados congruentes.</p>
-    <br>
-    <div id="inputContainer2" class="inputContainer">
-      <label for="length1">Ingrese la longitud del primer lado.</label>
-      <input type="number" name="length" id="length1" placeholder="Números enteros positivos" required>
-      <label for="length2">Ingrese la longitud del segundo lado.</label>
-      <input type="number" name="length" id="length2" placeholder="Números enteros positivos" required>
-      <label for="length3">Ingrese la longitud del tercer lado.</label>
-      <input type="number" name="length" id="length3" placeholder="Números enteros positivos" required>
+    <nav class="nav-bar">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="./Pages/tutorial.html">Study</a></li>
+        <li><a href="./Pages/drawing.html">2D Live</a></li>
+        <li><a href="./Pages/history.html">History</a></li>
+        <li><a href="./Pages/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-index">
+    <h1 class="main-index-title">¡Bienvenido a Triangle Master!</h1>
+    <div class="main-index-card">
+      <p class="main-index-text">
+        TriangleMaster es un espacio interactivo que te permite explorar el fascinante mundo de los triángulos.
+        Conviértete en un maestro de la geometría mientras clasificas triángulos por sus ángulos y lados. ¿Serás capaz
+        de
+        identificar un triángulo equilátero, rectángulo o isósceles? ¡Sumérgete en TriangleMaster y mejora tus
+        habilidades
+        matemáticas de manera divertida y educativa!
+      </p>
     </div>
-    <button type="button" id="submit4" onclick="triangleMaster()">Enviar</button>
-  </div>
-  <div id="output2"  style="display: none;">
-    <h2>Clasificación por Longitud:</h2>
-    <p class="output" id="resultado2"></p>
-  </div>
-  <!-- Para Opción 2 End --> 
-    <!-- Para Opción 3 Calcular perímetro Start -->
-    <div id="promptCard3" style="display: none;">
-      <h2>Ingreso de datos:</h2>
-      <p>Para conocer el perimetro se deben sumar sus tres lados.</p>
-      <div id="inputContainer3" class="inputContainer">
-        <label for="lengthP1">Ingrese la longitud del primer lado.</label>
-        <input type="number" name="lengthP" id="lengthP1" placeholder="Números enteros positivos" required>
-        <label for="lengthP2">Ingrese la longitud del segundo lado.</label>
-        <input type="number" name="lengthP" id="lengthP2" placeholder="Números enteros positivos" required>
-        <label for="lengthP3">Ingrese la longitud del tercer lado.</label>
-        <input type="number" name="lengthP" id="lengthP3" placeholder="Números enteros positivos" required>
+    <br>
+    <div class="main-index-card-menu">
+      <div id="redirigir1" class="main-index-card-menu-option">
+        <h5 class="redirigir1">Study</h5>
+        <p class="redirigir1">Ingrese aquí para estudiar la clasificación y algunas operaciones básicas de los
+          triángulos.</p>
+        <a href="./Pages/tutorial.html">Ingresar
+          <svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9" />
+          </svg></a>
       </div>
-      <button type="button" id="submit1" onclick="triangleMaster()">Enviar</button>
+      <div id="redirigir2" class="main-index-card-menu-option">
+        <h5 class="redirigir2">2D live</h5>
+        <p class="redirigir2">Interactua con los vertices de un triángulo y créa distintos tipos.</p>
+        <a href="./Pages/drawing.html" class="redirigir2">
+          Ingresar
+          <svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9" />
+          </svg>
+        </a>
+      </div>
     </div>
-    <div id="output3"  style="display: none;">
-      <h2>Perimetro del triángulo:</h2>
-      <p class="output" id="resultado3"></p>
-    </div>
-    <!-- Para Opción 3 End --> 
-        <!-- Para Opción 4 Calcular Área Start -->
-        <div id="promptCard4" style="display: none;">
-          <h2>Ingreso de datos:</h2>
-          <p>Para conocer el área de un triángulo, se debe multiplicar la altura por su base y eso dividirlo en dos.</p>
-          <div id="inputContainer4 class="inputContainer"">
-            <label for="base">Ingrese la longitud de la base.</label>
-            <input type="number" name="base" id="base" placeholder="Números enteros positivos" required>
-            <label for="height">Ingrese la altura del triángulo.</label>
-            <input type="number" name="height" id="height" placeholder="Números enteros positivos" required>
-          </div>
-          <button type="button" id="submit2" onclick="triangleMaster()">Enviar</button>
-        </div>
-        <div id="output4"  style="display: none;">
-          <h2>Área del triángulo:</h2>
-          <p class="output" id="resultado4"></p>
-        </div>
-        <!-- Para Opción 4 End --> 
-<script src="./js/index.js" defer></script>
+  </main>
+
+  <footer class="footer">
+    &copy;<span id="year"> </span> <span> Mo Triangle. All rights reserved.</span>
+  </footer>
+  <script src="./js/header.js" defer></script>
+  <script src="./js/footer.js"></script>
+  <script src="./js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
+
 </html>

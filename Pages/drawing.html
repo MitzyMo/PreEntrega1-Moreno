@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Explore the facinating world of triangles" />
+    <meta name="keywords" content="triangles game study math" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="../Assets/css/main.css">
+    <title>2D Rendering</title>
+    <!--ICON-->
+    <link alt="logo" rel="shortcut icon" href="../Assets/Media/triangle.png" type="image/x-icon" />
+
+</head>
+
+<body onload="initialize();">
+    <header>
+        <div class="logo"><a href="../index.html"><img src="../Assets/Media/triangle.png" style="height: 30px;" alt="TriangleQuest"> Quest</a></div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="../index.html" class="active">Home</a></li>
+                <li><a href="./tutorial.html">Study</a></li>
+                <li><a href="./drawing.html">2D Live</a></li>
+                <li><a href="./history.html">History</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-drawing">
+        <H2 class="drawing-title">Transformación interactiva de triángulos</H2>
+        <div class="sliders">
+            <div class="column-draw">
+                <label class="label" for="slider1x">Vertex 1 X:</label>
+                <input type="range" id="slider1x" min="-1.0" max="1.0" step="0.01" value="0.0">
+    
+                <label class="label" for="slider2x">Vertex 2 X:</label>
+                <input type="range" id="slider2x" min="-1.0" max="1.0" step="0.01" value="-0.5">
+    
+                <label class="label" for="slider3x">Vertex 3 X:</label>
+                <input type="range" id="slider3x" min="-1.0" max="1.0" step="0.01" value="0.5">
+            </div>
+    
+            <div class="column-draw">
+                <label class="label" for="slider1y">Vertex 1 Y:</label>
+                <input type="range" id="slider1y" min="-1.0" max="1.0" step="0.01" value="0.5">
+    
+                <label class="label" for="slider2y">Vertex 2 Y:</label>
+                <input type="range" id="slider2y" min="-1.0" max="1.0" step="0.01" value="-0.5">
+    
+                <label class="label" for="slider3y">Vertex 3 Y:</label>
+                <input type="range" id="slider3y" min="-1.0" max="1.0" step="0.01" value="-0.5">
+            </div>
+        </div>
+        <canvas id="draw-surface" >
+            Your Browser does not support HTML5
+        </canvas>
+        <br>
+        <p id="quote">- Phrase</p>
+    </main>
+    <footer class="footer">
+        &copy;<span id="year"> </span><span> Mo Triangle. All rights reserved.</span>
+    </footer>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/footer.js"></script>
+    <script src="../js/drawing.js" defer></script>
+</body>
+
+</html>

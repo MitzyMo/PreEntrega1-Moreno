@@ -1,0 +1,43 @@
+{
+    "triangles": [
+      {
+        "classification type": "ByAngles",
+        "history": [
+          {
+            "result": "Rectángulo",
+            "date": "2023-01-01"
+          }
+
+        ]
+      },
+      {
+        "classification type": "BySides",
+        "history": [
+          {
+            "result": "Equilátero",
+            "date": "2023-01-01"
+          }
+          
+        ]
+      },
+      {
+        "classification type": "ByPerimeter",
+        "history": [
+          {
+            "result": 15.5,
+            "date": "2023-01-01"
+          }
+        ]
+      },
+      {
+        "classification type": "ByArea",
+        "history": [
+          {
+            "result": 25.0,
+            "date": "2023-01-01"
+          }
+
+        ]
+      }
+    ]
+  }

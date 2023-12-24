@@ -1,84 +1,532 @@
+/* Global CSS that are applied for all screen sizes */
 * {
-    box-sizing: border-box;
-  }
-body {
-    max-width: 60%;
-    font-family: 'Courier New', Courier, monospace;
-    text-align: center;
-    margin: 0 auto;
-    background-image: url("../Media/endless-constellation.svg");
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Courier New", Courier, monospace;
+  box-sizing: border-box;
 }
-h1 {
-    margin-top: 50px;
-    font-family: 'Courier New', Courier, monospace;
-} 
+.swal2-popup {
+  font-size: 15px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: lighter;
+}
+/*----- HEADER START -----*/
+header {
+  background-color: #fff;
+  opacity: 80%;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px;
+}
+
+.logo a {
+  font-size: 30px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+.hamburger {
+  display: none;
+}
+
+.nav-bar ul {
+  display: flex;
+}
+
+.nav-bar ul li a {
+  display: block;
+  color: #000;
+  font-size: 20px;
+  padding: 10px 25px;
+  transition: 0.1s;
+  margin: 0 5px;
+  border-radius: 20%;
+}
+.nav-bar ul li a:active,
+.nav-bar ul li a:hover {
+  border-bottom-style: inset;
+  border-bottom-color: dodgerblue;
+}
+.hamburger div {
+  width: 30px;
+  height: 3px;
+  margin: 5px 0;
+  background: #000;
+}
+@media only screen and (max-width: 1320px) {
+  header {
+    padding: 10px 50px;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  header {
+    padding: 10px 30px;
+  }
+}
+@media only screen and (max-width: 930px) {
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+  .hamburger .line {
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+    margin: 6px 0;
+  }
+  .nav-bar {
+    height: 0;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    background: #fff;
+    padding: 30px;
+    transition: 0.5s;
+    overflow: hidden;
+  }
+  .nav-bar.active {
+    height: 450px;
+  }
+
+  .nav-bar ul {
+    display: block;
+    width: fit-content;
+    margin: 70px auto 0 auto;
+    text-align: center;
+    transition: 0.5s;
+    opacity: 0;
+  }
+  .nav-bar.active ul {
+    opacity: 1;
+  }
+
+  .nav-bar ul li a {
+    margin: 12px 0;
+  }
+}
+/*----- HEADER END -----*/
+
+/*----- BODY START -----*/
+body {
+  text-align: center;
+  margin: 0 auto;
+  background-image: url("../Media/endless-constellation.svg");
+  padding-bottom: 100px;
+}
+.main-index,
+.main-tutorial,
+.main-history,
+.main-drawing {
+  margin-top: 70px;
+  height: 100vh;
+}
+
+.main-index-title,
+.main-tutorial-title {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 50px;
+}
+.main-index-card {
+  max-width: 80%;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  font-size: 20px;
+}
+
+.main-index-card-menu {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px; /* Adjust as needed */
+}
+
+.main-index-card-menu-option {
+  width: 30%; /* Set to 48% to leave some space between columns */
+  box-sizing: border-box;
+  padding: 20px;
+  border: 1px solid #ccc; /* Optional: Add border for visual separation */
+  border-radius: 8px;
+  transition: transform 0.3s ease; /* Optional: Add a subtle transition effect */
+  background-color: white;
+}
+
+@media only screen and (max-width: 930px) {
+  .main-index-card-menu {
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+  }
+  .main-index-card-menu-option {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+.main-index-card-menu-option:hover {
+  transform: scale(1.05); /* Optional: Scale up slightly on hover */
+}
+
+.main-index-card-menu-option a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.main-index-card-menu-option h5 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #4c78af;
+}
+
+.main-index-card-menu-option p {
+  margin-bottom: 20px;
+}
+
+.main-index-card-menu-option .logo {
+  width: 18px; /* Adjust the width of the SVG */
+  margin-left: 5px; /* Adjust the space between text and SVG */
+  color: #4c78af;
+}
+
+#card1,
+#card2,
+#card3 {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
 .card {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: white;
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+.card-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.card h2 {
+  margin: 20px;
+  color: #1e1f20;
+  margin-bottom: 50px;
+}
+.card select {
+  font-size: 20px;
+}
+.card option {
+  font-size: 15px;
 }
 
 select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-input{
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
-#output1, #output2, #output3, #output4 {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    background-color: #ccc;
+#output1,
+#output2,
+#output3,
+#output4 {
+  width: 400px;
+
+  min-height: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  background-color: #ccc;
 }
-
-#promptCard1, #promptCard2,#promptCard3,#promptCard4 {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    background-color: white;
+#output1 h2,
+#output2 h2,
+#output3 h2,
+#output4 h2 {
+  padding: 20px;
 }
-
-
-
+#output1 p,
+#output2 p,
+#output3 p,
+#output4 p {
+  font-size: 20px;
+}
+#promptCard1,
+#promptCard2,
+#promptCard3,
+#promptCard4 {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  background-color: white;
+}
+#promptCard1 h2,
+#promptCard2 h2,
+#promptCard3 h2,
+#promptCard4 h2 {
+  padding: 20px;
+}
+#promptCard1 p,
+#promptCard2 p,
+#promptCard3 p,
+#promptCard4 p {
+  font-size: 20px;
+}
+#promptCard1 label,
+#promptCard2 label,
+#promptCard3 label,
+#promptCard4 label {
+  margin: 10px;
+}
 #play {
-    width: 30%;
-    background-color: #4c78af;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  margin-top: 20px;
+  width: 30%;
+  background-color: #4c78af;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
 }
 
-#submit1,#submit2,#submit3,#submit4 {
-    width: 30%;
-    background-color: #4caf72;
-    color: white;
-    padding: 10px 15px;
-    border: none;
+#submit1,
+#submit2,
+#submit3,
+#submit4 {
+  width: 30%;
+  background-color: #4caf72;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/*----- BODY END -----*/
+
+/*----- FOOTER START -----*/
+.footer {
+  position: fixed; /* Change to fixed to keep it at the bottom of the viewport */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: hsl(300, 100%, 25%, 0.1);
+  color: #000;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  letter-spacing: 5px;
+}
+/*----- FOOTER START -----*/
+
+@media only screen and (max-width: 1320px) {
+}
+@media only screen and (max-width: 1100px) {
+}
+@media only screen and (max-width: 760px) {
+}
+
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  background: hsl(300, 100%, 25%, 0.1);
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 4px 4px 2px rgb(164, 188, 254);
+  text-align: left;
+  font-weight: bold;
+}
+
+.wrapper h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #332902;
+}
+
+.wrapper .input_field {
+  margin-bottom: 10px;
+}
+
+.wrapper .input_field input[type="text"],
+.wrapper textarea {
+  border: 1px solid #e0e0e0;
+  width: 100%;
+  padding: 10px;
+}
+
+.wrapper textarea {
+  resize: none;
+  height: 80px;
+}
+
+.wrapper .btn input[type="submit"] {
+  border: 0px;
+  margin-top: 15px;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  background: #4c78af;
+  color: #fcfbf7;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#error_message {
+  margin-bottom: 20px;
+  background: #fe8b8e;
+  padding: 0px;
+  text-align: center;
+  font-size: 14px;
+  transition: all 0.5s ease;
+}
+
+.card-container-history {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(3, auto); /* 3 rows with auto height */
+  gap: 20px; /* Space between items */
+  align-items: center;
+  justify-items: center;
+}
+.search {
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.sort {
+  padding: 8px;
+  width: 80%;
+  background-color: #4c78af;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+/* Column styles */
+.column-history {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* Media query for responsive design */
+@media only screen and (max-width: 600px) {
+  .card-container-history {
+    grid-template-columns: 1fr; /* Single column for small screens */
+  }
+  .wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 350px;
+    width: 100%;
+    background: hsl(300, 100%, 25%, 0.1);
+    padding: 25px;
     border-radius: 5px;
-    cursor: pointer;
+    box-shadow: 4px 4px 2px rgb(164, 188, 254);
+    text-align: left;
+    font-weight: bold;
+  }
+}
+
+.sliders {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.column-draw {
+  width: 30%;
+}
+/* Additional styling for labels and input elements (optional) */
+.label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+.drawing-title {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+canvas {
+  width: 80%;
+  height: 500px;
+  margin-bottom: 40px;
+}
+#quote {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 20px;
+  font-style: italic;
+  color: #fff;
+  background-color: rgba(0, 0, 0);
 }
